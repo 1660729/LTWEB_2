@@ -1,5 +1,17 @@
 /*
- Date: 10/05/2019 15:11:08
+ Navicat Premium Data Transfer
+
+ Source Server         : qlbh
+ Source Server Type    : MySQL
+ Source Server Version : 100138
+ Source Host           : localhost:3306
+ Source Schema         : baodientu
+
+ Target Server Type    : MySQL
+ Target Server Version : 100138
+ File Encoding         : 65001
+
+ Date: 16/05/2019 22:32:23
 */
 
 SET NAMES utf8mb4;
@@ -44,10 +56,11 @@ CREATE TABLE `chitietbaiviet`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `chuyenmuc`;
 CREATE TABLE `chuyenmuc`  (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `TenChuyenMuc` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `ID` int(11) NOT NULL,
+  `TenLoai` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `LoaiCha` int(255) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for docgia
