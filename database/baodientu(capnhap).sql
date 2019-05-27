@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost_3306
+ Source Server         : vinhle
  Source Server Type    : MySQL
- Source Server Version : 100136
+ Source Server Version : 100138
  Source Host           : localhost:3306
  Source Schema         : baodientu
 
  Target Server Type    : MySQL
- Target Server Version : 100136
+ Target Server Version : 100138
  File Encoding         : 65001
 
- Date: 22/05/2019 05:29:45
+ Date: 27/05/2019 14:35:43
 */
 
 SET NAMES utf8mb4;
@@ -203,18 +203,18 @@ CREATE TABLE `chuyenmuc`  (
 -- ----------------------------
 -- Records of chuyenmuc
 -- ----------------------------
-INSERT INTO `chuyenmuc` VALUES (1, 'Bóng Đá', NULL);
-INSERT INTO `chuyenmuc` VALUES (2, 'Kinh Doanh', NULL);
-INSERT INTO `chuyenmuc` VALUES (3, 'Pháp Luật', NULL);
-INSERT INTO `chuyenmuc` VALUES (4, 'Showbiz', NULL);
-INSERT INTO `chuyenmuc` VALUES (5, 'Bóng Đá Việt Nam', NULL);
-INSERT INTO `chuyenmuc` VALUES (6, 'Ngoại Hạng Anh', NULL);
-INSERT INTO `chuyenmuc` VALUES (7, 'Doanh Nhân', NULL);
-INSERT INTO `chuyenmuc` VALUES (8, 'Bất Động Sản', NULL);
-INSERT INTO `chuyenmuc` VALUES (9, 'Vụ Án Nổi Tiếng', NULL);
-INSERT INTO `chuyenmuc` VALUES (10, 'Trọng Án', NULL);
-INSERT INTO `chuyenmuc` VALUES (11, 'Sao Việt', NULL);
-INSERT INTO `chuyenmuc` VALUES (12, 'Sao Hollywood và Các Nước Khác', NULL);
+INSERT INTO `chuyenmuc` VALUES (1, 'Bóng Đá', 0);
+INSERT INTO `chuyenmuc` VALUES (2, 'Kinh Doanh', 0);
+INSERT INTO `chuyenmuc` VALUES (3, 'Pháp Luật', 0);
+INSERT INTO `chuyenmuc` VALUES (4, 'Showbiz', 0);
+INSERT INTO `chuyenmuc` VALUES (5, 'Bóng Đá Việt Nam', 1);
+INSERT INTO `chuyenmuc` VALUES (6, 'Ngoại Hạng Anh', 1);
+INSERT INTO `chuyenmuc` VALUES (7, 'Doanh Nhân', 2);
+INSERT INTO `chuyenmuc` VALUES (8, 'Bất Động Sản', 2);
+INSERT INTO `chuyenmuc` VALUES (9, 'Vụ Án Nổi Tiếng', 3);
+INSERT INTO `chuyenmuc` VALUES (10, 'Trọng Án', 3);
+INSERT INTO `chuyenmuc` VALUES (11, 'Sao Việt', 4);
+INSERT INTO `chuyenmuc` VALUES (12, 'Sao Hollywood và Các Nước Khác', 4);
 
 -- ----------------------------
 -- Table structure for docgia
@@ -243,6 +243,12 @@ CREATE TABLE `taikhoan`  (
   `NgaySinh` date NULL DEFAULT NULL,
   `PhanQuyen` int(255) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of taikhoan
+-- ----------------------------
+INSERT INTO `taikhoan` VALUES (1, 'vinh', '$2b$10$uBncvElZ6HLnqjTxRzmtJO8Yzsmcoh81jHQksf7BKY0Xp5M7BXjxa', 'vinh', NULL, 'lengocvinh.729@gmail.com', '1998-05-18', 0);
+INSERT INTO `taikhoan` VALUES (2, 'nam', '$2b$10$5TwBYzLdBHxKs2BfK.Fn2.2hk3DXwd.T6zhs4NY0o4bqzLVxqCRZ6', 'nam', NULL, 'nam@gmail.com', '2019-05-30', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
