@@ -2,27 +2,26 @@
 <html lang="en">
 
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8">
-	<title>Báo điện tử</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Báo điện tử</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700">
 
-	<!-- Stylesheets -->
+    <!-- Stylesheets -->
 
-	<link href="plugin-frameworks/bootstrap.css" rel="stylesheet">
+    <link href="/plugin-frameworks/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/fonts/ionicons.css" rel="stylesheet" type="text/css">
+    <link href="/common/styles.css" rel="stylesheet" type="text/css">
 
-	<link href="fonts/ionicons.css" rel="stylesheet">
-
-
-	<link href="common/styles.css" rel="stylesheet">
+    {{{_sections.css}}}
 </head>
 
 <body>
-	<header>
+    <header>
         <div class="bg-191">
             <div class="container">
                 <div class="oflow-hidden color-ash font-9 text-sm-center ptb-sm-5">
@@ -33,12 +32,31 @@
                         <li><a href="#">Submit Press Release</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
-                    <ul class="float-right float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-5">
-                        <li><a class="pl-0 pl-sm-10" href="#"><i class="ion-social-facebook"></i></a></li>
-                        <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                        <li><a href="#"><i class="ion-social-google"></i></a></li>
-                        <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                        <li><a href="#"><i class="ion-social-bitcoin"></i></a></li>
+
+                    <form id="frmLogout" action="/account/logout" method="POST"></form>
+                    <ul class="float-right float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-5 ">
+                        {{#if isAuthenticated}}
+                        <li>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                Hi,<strong>{{authUser.HoTen}}</strong>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="/account/profile">
+                                    Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:$('#frmLogout').submit();">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    Sign Out
+                                </a>
+                            </div>
+                        </li>
+                        {{else}}
+                        <li><a href="/account/register">Register</a></li>
+                        <li><a href="/account/login">Sign in</a></li>
+                        {{/if}}
+
                     </ul>
 
                 </div>
@@ -49,7 +67,7 @@
         <!-- bg-191 -->
 
         <div class="container">
-            <a class="logo" href="#"><img src="images/logo-black.png" alt="Logo"></a>
+            <a class="logo" href="/"><img src="/images/logo-black.png" alt="Logo"></a>
 
             <a class="right-area src-btn" href="#">
                 <i class="active src-icn ion-search"></i>
@@ -83,19 +101,23 @@
     </header>
 
 
-	{{{body}}}
+    <div>
+        {{{body}}}
+    </div>
 
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
 
-	<script src="plugin-frameworks/tether.min.js"></script>
 
-	<script src="plugin-frameworks/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-	<script src="common/scripts.js"></script>
+    <script src="/plugin-frameworks/jquery-3.2.1.min.js"></script>
+    <script src="/plugin-frameworks/tether.min.js"></script>
+    <script src="/plugin-frameworks/bootstrap.js"></script>
+    <script src="/common/scripts.js"></script>
+
+    {{{_sections.js}}}
 </body>
 
 </html>

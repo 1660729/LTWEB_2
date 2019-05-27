@@ -1,17 +1,27 @@
 var express = require('express');
-var morgan = require('morgan');
 var exphbs = require('express-handlebars');
+var hbs_sections = require('express-handlebars-sections');
+var morgan = require('morgan');
 var createError = require('http-errors');
+var numeral = require('numeral');
+var path = require('path');
 
 var app = express();
+// app.use(express.static('/public'));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(morgan('dev'));
 
-app.use(express.static('public'));
-
 // su dung express-handlebars 
 app.engine('hbs', exphbs({
-    defaultLayout: 'main.hbs'
+    layoutsDir: 'views/layouts',
+    defaultLayout: 'main.hbs',
+    helpers: {
+        format_number: val => {
+            return numeral(val).format('0,0');
+        },
+        section: hbs_sections()
+    }
 }));
 
 app.set('view engine', 'hbs');
@@ -19,15 +29,23 @@ app.set('view engine', 'hbs');
 // su dung phuong thuc post
 app.use(express.urlencoded({
     extended: true
-}))
+}));
 
-app.use(express.json())
+app.use(express.json());
 
-// render toi trang can su dung
+require('./middlewares/session')(app);
+require('./middlewares/passport')(app);
+
+app.use(require('./middlewares/auth.mdw'));
+
+app.use('/account', require('./routes/account'));
+
+// render toi trang home
 app.get('/', (req, res) => {
     res.render('home');
 });
 
+// render toi trang error
 app.get('/error', (req, res) => {
     res.render('error', { layout: false });
 });
@@ -57,5 +75,5 @@ app.use((err, req, res, next) => {
 
 var port = 3000;
 app.listen(port, () => {
-    console.log(`server is running at port ${port}`);
+    console.log(`server is running at port http://localhost:${port}`);
 });
