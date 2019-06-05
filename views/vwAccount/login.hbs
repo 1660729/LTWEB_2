@@ -45,11 +45,11 @@
                 </div>
                 {{/if}}
 
-                <form method="POST">                   
+                <form method="POST">
                     <div class="form-group">
                         <div class="input-group">
                             <input class="form-control form-control-lg border-right-0 border" placeholder="User name"
-                                type="text" name="username" autofocus>
+                                type="text" name="username" autofocus value="vinh">
                             <span class="input-group-append">
                                 <div class="input-group-text bg-white">
                                     <i class="fa fa-user" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <input class="form-control form-control-lg border-right-0 border" placeholder="Password"
-                                type="password" name="password">
+                                type="password" name="password" value="123456">
                             <span class="input-group-append">
                                 <div class="input-group-text bg-white">
                                     <i class="fa fa-key" aria-hidden="true"></i>
@@ -82,15 +82,18 @@
                             </button>
                         </div>
                     </div>
-                    <a href="#" id="forgot_pswd">Forgot password?</a>
+                    <a href="/account/forgotpassword" id="forgot_pswd">Forgot password?</a>
                     <a class="float-right" href="/account/register" id="forgot_pswd">Register</a>
                     <p style="text-align:center"> OR </p>
                     <div class="form-group">
-                        <button class="btn btn-primary btn-lg active ml-6" type="button">                
-                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                            &nbsp; Facebook
-                        </button>
-                        <button class="btn btn-danger btn-lg active" type="button">                           
+                        <a href="/auth/facebook">
+                            <button class="btn btn-primary btn-lg active ml-6" type="button">
+                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                &nbsp; Facebook
+                            </button>
+                        </a>
+
+                        <button class="btn btn-danger btn-lg active" type="button">
                             <i class="fa fa-google-plus" aria-hidden="true"></i>
                             &nbsp;Google+
                         </button>

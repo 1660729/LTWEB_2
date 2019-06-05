@@ -35,28 +35,39 @@
 
                     <form id="frmLogout" action="/account/logout" method="POST"></form>
                     <ul class="float-right float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-5 ">
+                                                        
                         {{#if isAuthenticated}}
+
                         <li>
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="true" aria-expanded="false">
                                 Hi,<strong>{{authUser.HoTen}}</strong>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="/account/profile">
-                                    Profile
+                                
+                                <a class="dropdown-item" href="/account/profile/{{authUser.ID}}">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    &nbsp; Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/account/editpassword/{{authUser.ID}}">
+                                    <i class="fa fa-key" aria-hidden="true"></i>
+                                    &nbsp; Change Password
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:$('#frmLogout').submit();">
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    Sign Out
+                                    &nbsp; Sign Out
                                 </a>
                             </div>
                         </li>
+
                         {{else}}
+                        
                         <li><a href="/account/register">Register</a></li>
                         <li><a href="/account/login">Sign in</a></li>
                         {{/if}}
-
+                        
                     </ul>
 
                 </div>
