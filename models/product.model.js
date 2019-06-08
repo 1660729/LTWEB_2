@@ -1,13 +1,69 @@
-var db = require('../untils/db');
+var db = require('../utils/db');
 
 module.exports = {
     all: () => {
-        return db.load('select * from products');
+        return db.load('select * from baiviet');
     },
-    allByCat:Catid => {
-        return db.load('select * from products wwhere CatID = ${CatID}');
+
+    // top 10 bai viet moi nhat
+    latestNews: () => {
+        return db.load(`
+            SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year  
+            FROM baiviet bv JOIN chuyenmuccon con ON bv.ChuyenMucConID = con.ID            
+            ORDER BY bv.NgayDang desc LIMIT 0,10
+        `);
     },
+
+    // top 10 chuyên mục, mỗi chuyên mục 1 bài mới nhất
+    latestNewsCat: () => {
+        return db.load(`
+            SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year  
+            FROM baiviet bv JOIN chuyenmuccon con ON bv.ChuyenMucConID = con.ID
+            GROUP BY bv.ChuyenMucConID 
+            ORDER BY bv.NgayDang desc LIMIT 0,10
+        `);
+    },
+
+    // 10 bai viet duoc xem nhieu nhat
+    latestViews: () => {
+        return db.load(`
+            SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year  
+            FROM baiviet bv JOIN chuyenmuccon con ON bv.ChuyenMucConID = con.ID
+            GROUP BY bv.LuotXem
+            ORDER BY bv.LuotXem desc LIMIT 0,10
+        `);
+    },
+
+    // 4 bai viet noi bat nhat trong tuan
+    popularNews: () => {
+        return db.load(`
+            SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year 
+            FROM baiviet bv JOIN chuyenmuccon con ON bv.ChuyenMucConID = con.ID
+            WHERE DATEDIFF(NOW(), bv.NgayDang) <= 7
+            GROUP BY DAY(bv.NgayDang) LIMIT 4
+        `);
+    },
+
+    allByCat: CatId => {
+        return db.load(`select * from baiviet where ChuyenMucConID = ${CatId}`);
+    },
+
     single: id => {
-        return db.load 
+        return db.load(`select * from baiviet where ID = ${id}`);
+    },
+
+    add: entity => {
+        return db.add('baiviet', entity);
+    },
+
+    update: entity => {
+        var id = entity.ProID;
+        delete entity.ProID;
+        return db.update('baiviet', 'ID', entity, id);
+    },
+
+    delete: id => {
+        return db.delete('baiviet', 'ID', id)
     }
-}
+
+};

@@ -5,6 +5,7 @@ var morgan = require('morgan');
 var createError = require('http-errors');
 var numeral = require('numeral');
 var path = require('path');
+// var productModel = require('./models/product.model');
 
 var app = express();
 // app.use(express.static('/public'));
@@ -33,9 +34,16 @@ app.use(express.urlencoded({
 
 app.use(express.json());
 
+
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
 
+app.use(require('./middlewares/category.mdw'));
+app.use(require('./middlewares/categoryChild.mdw'));
+app.use(require('./middlewares/productNews.mdw'));
+app.use(require('./middlewares/popularWeek.mdw'));
+app.use(require('./middlewares/productViews.mdw'));
+app.use(require('./middlewares/productNewsCat.mdw'));
 app.use(require('./middlewares/auth.mdw'));
 
 app.use('/account', require('./routes/account'));
