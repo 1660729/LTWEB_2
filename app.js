@@ -44,9 +44,12 @@ app.use(require('./middlewares/productNews.mdw'));
 app.use(require('./middlewares/popularWeek.mdw'));
 app.use(require('./middlewares/productViews.mdw'));
 app.use(require('./middlewares/productNewsCat.mdw'));
+app.use(require('./middlewares/sameCategory.mdw'));
 app.use(require('./middlewares/auth.mdw'));
 
 app.use('/account', require('./routes/account'));
+app.use('/categories', require('./routes/categories'));
+app.use('/products', require('./routes/products'));
 
 // render toi trang home
 app.get('/', (req, res) => {
@@ -70,8 +73,14 @@ app.use((err, req, res, next) => {
         vwErr = '404';
     }
 
-    var message = err.message;
-    var error = err;
+    // app.set('env', 'prod');
+    var isProd = false;
+    if (process.env.NODE_ENV && process.env.NODE_ENV === 'prod') {
+        isProd = true;
+    }
+
+    var message = isProd ? 'An error has occured. Please contact Administrator for more support.' : err.message;
+    var error = isProd ? {} : err;
 
     res.status(status).render(vwErr, {
         layout: false,

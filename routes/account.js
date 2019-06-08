@@ -139,12 +139,6 @@ router.get('/profile/:id', restricted, (req, res, next) => {
             }
         }).catch(next);
 
-    // var id = req.params.id;
-    // userModel.single(id).then(rows => {
-    //     var profile = rows[0];
-    //     res.render('vwAccount/profile', { error: false, profile });
-    // });
-
 })
 
 router.get('/editprofile/:id', (req, res, next) => {
@@ -171,14 +165,6 @@ router.get('/editprofile/:id', (req, res, next) => {
         }).catch(next);
 
 })
-
-// router.get('/editprofile/:id', restricted, (req, res, next) => {
-//     var id = req.params.id;
-//     userModel.single(id).then(rows => {
-//         var editprofile = rows[0];
-//         res.render('vwAccount/editprofile', { error: false, editprofile });
-//     });
-// })
 
 router.post('/editprofile/:id', restricted, (req, res, next) => {
     var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY-MM-DD');
@@ -238,72 +224,6 @@ router.post('/editpassword/:id', (req, res, next) => {
 router.get('/forgotpassword', (req, res, next) => {
     res.render('vwAccount/forgotpassword');
 })
-
-
-// router.post('/forgotpassword', (req, res, next) => {
-//     var entity = req.body
-
-//     // tao password ngau nhien khi forgot
-//     var iteration = 0;
-//     var randomPassword = "";
-//     var randomNumber;
-//     var special = false;
-//     while (iteration < 6) {
-//         randomNumber = (Math.floor((Math.random() * 100)) % 94) + 33;
-//         if (!special) {
-//             if ((randomNumber >= 33) && (randomNumber <= 47)) { continue; }
-//             if ((randomNumber >= 58) && (randomNumber <= 64)) { continue; }
-//             if ((randomNumber >= 91) && (randomNumber <= 96)) { continue; }
-//             if ((randomNumber >= 123) && (randomNumber <= 126)) { continue; }
-//         }
-//         iteration++;
-//         randomPassword += String.fromCharCode(randomNumber);
-//     }
-//     // gui mail
-//     userModel.confirmEmail(entity.Email).then(rows => {
-//         if (rows.length > 0) {
-//             var user = rows[0];
-//             var transporter = nodemailer.createTransport('smtps://lengocvinh.729%40gmail.com:SinceOrFor729@smtp.gmail.com');
-//             var mailOptions = {
-//                 from: '"baodientu" <foo@blurdybloop.com>', // sender address                
-//                 to: entity.Email, // list of receivers
-//                 subject: '[BAODIENTU] Thông tin đăng nhập tài khoản', // Subject line
-//                 text: 'Reset Password', // plaintext body
-//                 html: `<div>
-//                         <p>Xin chào bạn ` + user.HoTen + `</p>
-//                         <p>Mật khẩu đăng nhập mới của bạn trên baodientu là:</p>
-//                         <p>Tên đăng nhập: ` + user.NguoiDung + ` <br> Mật khẩu:  ` + randomPassword + `</p>
-//                         <p>Trân trọng,</p>
-//                         <p>----------<br>
-//                         Hệ thống Quản lý Báo Điện Tử<br>
-//                         Đồ án sinh viên CNTT <br> Đại học Khoa học Tự nhiên - ĐHQG TP. Hồ Chí Minh<br>
-//                     </div>`
-//             };
-
-//             transporter.sendMail(mailOptions, function(error, info) {
-//                 if (error) {
-//                     return console.log("loi");
-//                 }
-//                 console.log('Message sent: ' + info.response);
-//             });
-
-//             // update mat khau vua tao
-
-//             var saltRounds = 10;
-//             var hash = bcrypt.hashSync(randomPassword, saltRounds);
-
-//             entity.MatKhau = hash;
-
-//             delete entity.email;
-
-//             userModel.update(entity, entity.ID).then(id => {
-//                 return res.redirect('/account/login');
-//             })
-//         } else {
-//             return res.send("sendmail not successfull!");
-//         }
-//     })
-// })
 
 router.post('/forgotpassword', (req, res, next) => {
     var entity = req.body

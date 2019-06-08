@@ -44,12 +44,25 @@ module.exports = {
         `);
     },
 
+    // 5 bai viet cung chuyen muc
+    // sameCat: () => {
+    //     return db.load(`
+    //         SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year  
+    //         FROM baiviet bv JOIN chuyenmuccon con ON bv.ChuyenMucConID = con.ID            
+    //         ORDER BY bv.NgayDang desc LIMIT 0,10
+    //     `);
+    // },
+
     allByCat: CatId => {
         return db.load(`select * from baiviet where ChuyenMucConID = ${CatId}`);
     },
 
     single: id => {
-        return db.load(`select * from baiviet where ID = ${id}`);
+        return db.load(`
+            SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year 
+            FROM baiviet bv JOIN chuyenmuccon con ON bv.ChuyenMucConID = con.ID
+            WHERE ProID = ${id}
+        `);
     },
 
     add: entity => {
@@ -59,7 +72,7 @@ module.exports = {
     update: entity => {
         var id = entity.ProID;
         delete entity.ProID;
-        return db.update('baiviet', 'ID', entity, id);
+        return db.update('baiviet', 'ProID', entity, id);
     },
 
     delete: id => {

@@ -6,22 +6,22 @@ module.exports = {
     },
 
     single: id => {
-        return db.load(`select * from chuyenmuccha where CatID = ${id}`);
+        return db.load(`select * from chuyenmuccha where ID = ${id}`);
     },
 
     // load chuyen muc cha
     alllWithDetails: () => {
         return db.load(`
-        SELECT c.*, COUNT(p.ID) AS num_of_products
-        FROM chuyenmuccha c LEFT JOIN baiviet p ON c.ID = p.ChuyeMucChaID
-        GROUP BY c.ID, c.TenLoaiCha
+            SELECT c.*, COUNT(p.ProID) AS num_of_products
+            FROM chuyenmuccha c LEFT JOIN baiviet p ON c.ID = p.ChuyenMucChaID
+            GROUP BY c.ID, c.TenLoaiCha
         `);
     },
 
     // load chuyen muc con
     alllWithDetailsChild: () => {
         return db.load(`
-        SELECT c.*, COUNT(p.ID) AS num_of_products
+        SELECT c.*, COUNT(p.ProID) AS num_of_products
         FROM chuyenmuccon c LEFT JOIN baiviet p ON c.ID = p.ChuyenMucConID
         GROUP BY c.ID, c.TenLoaiCon
         `);

@@ -7,7 +7,7 @@ module.exports = {
 
     single: id => {
         // return db.load(`select * from taikhoan where ID = ${id}`);
-        return db.load(`select *, day(NgaySinh) as day, month(NgaySinh) as month, year(NgaySinh)as year from taikhoan where ID = ${id}`);
+        return db.load(`select *, day(NgaySinh) as day, month(NgaySinh) as month, year(NgaySinh) as year from taikhoan where ID = ${id}`);
     },
 
     singleByUserName: userName => {

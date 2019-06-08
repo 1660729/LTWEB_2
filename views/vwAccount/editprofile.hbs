@@ -6,11 +6,11 @@
 <script>
   $(function () {
 
-    $('#txtDOB').datetimepicker({
-      format: 'd/m/Y',
-      timepicker: false,
-      mask: true,
-    });
+    //$('#txtDOB').datetimepicker({
+      //format: 'd/m/Y',
+      //timepicker: false,
+      //mask: true,
+    //});
 
     $('#editprofileForm').validate({
       rules: {
@@ -88,13 +88,13 @@
             <input type="text" class="form-control" id="txtEmail" name="Email" value="{{this.editprofile.Email}}">
           </div>
           <div class="form-group">
-            <label for="txtDOB">Date of birth</label>
-            <input type="text" class="form-control" id="txtDOB" name="dob" value="{{this.editprofile.NgaySinh}}">
+            <label for="txtDOB">Date of birth (dd/mm/yyyy)</label>
+            <input type="text" class="form-control" id="txtDOB" name="dob">
           </div>
         </div>
 
         <div class="card-footer float-left">
-          <a class="btn btn-outline-primary" href="/account/profile/{{this.pro.ID}}" role="button" title="Back">
+          <a class="btn btn-outline-primary" href="/account/profile/{{this.editprofile.ID}}" role="button" title="Back">
             <i class="fa fa-backward" aria-hidden="true"></i>
             Back
           </a>

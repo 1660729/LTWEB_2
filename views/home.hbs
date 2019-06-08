@@ -1,16 +1,20 @@
 <div class="container">
     <div class="card-body">
 
-        <h4 class="p-title"><b>TOP NEWS</b></h4>
+        <h4 class="p-title"><b>TIN MỚI</b></h4>
         <div class="row">
 
             {{#each this.products}}
             <div class="col-lg-4 mb-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="/images/sp/{{ID}}/main_thumbs.jpg" class="card-img-top" style="width:335px; height:250px"
-                        alt="{{TieuDe}}" title="{{TieuDe}}">
+                    <img src="/images/sp/{{ProID}}/main_thumbs.jpg" class="card-img-top"
+                        style="width:335px; height:250px" alt="{{TieuDe}}" title="{{TieuDe}}">
                     <div class="card-body">
-                        <h4 class="card-title font-weight-bold">{{TieuDe}}</h4>
+                        <h4 class="card-title">
+                            <a href="/products/{{ProID}}" class="font-weight-bold" title="View details">
+                                {{TieuDe}}
+                            </a>
+                        </h4>
                         <h6 class="card-title">
                             <i class="color-primary mr-5 font-12 fa fa-clock-o" aria-hidden="true"></i>
                             {{day}}/{{month}}/{{year}}
@@ -35,7 +39,7 @@
         <div class="row ">
 
             <div class="col-md-12 col-lg-8">
-                <h4 class="p-title"><b>TOP VIEWS</b></h4>
+                <h4 class="p-title"><b>XEM NHIỀU</b></h4>
                 <div class="row">
 
                     <div class="col-sm-6">
@@ -43,11 +47,15 @@
                         <div class="card mb-3" style="width: 730px;">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="/images/sp/{{ID}}/main_thumbs.jpg" class="card-img" alt="...">
+                                    <img src="/images/sp/{{ProID}}/main_thumbs.jpg" class="card-img" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h4 class="card-title font-weight-bold">{{TieuDe}}</h4>
+                                        <h4 class="card-title">
+                                            <a href="/products/{{ProID}}" class="font-weight-bold" title="View details">
+                                                {{TieuDe}}
+                                            </a>
+                                        </h4>
                                         <p class="card-text"><small class="text-muted">
                                                 <i class="color-primary mr-5 font-12 fa fa-clock-o"
                                                     aria-hidden="true"></i>
@@ -70,12 +78,17 @@
                 </div>
                 <!-- row -->
 
-                <h4 class="p-title mt-30"><b>TOP CATEGORIES NEWS</b></h4>
+                <h4 class="p-title mt-30"><b>TIN MỚI MỌI CHUYỆN MỤC</b></h4>
                 <div class="row">
                     {{#each productsViewCat}}
                     <div class="col-sm-6">
-                        <img src="/images/sp/{{ID}}/main_thumbs.jpg" alt="">
-                        <h4 class="pt-20"><a href="#"><b>{{TieuDe}}</b></a></h4>
+                                             
+                        <h4 class="pt-20">
+                            <img src="/images/sp/{{ProID}}/main_thumbs.jpg" alt="{{TieuDe}}">
+                            <a href="/products/{{ProID}}" class="font-weight-bold" title="View details">                              
+                                {{TieuDe}}
+                            </a>
+                        </h4>
                         <ul class="list-li-mr-20 pt-10 mb-30">
                             <h6 class="color-lite-black pt-10">
                                 <i class="color-primary mr-5 font-12 fa fa-clock-o" aria-hidden="true"></i>
@@ -102,13 +115,18 @@
             <div class="col-md-6 col-lg-4">
                 <div class="pl-20 pl-md-0">
                     <div class="mtb-50">
-                        <h4 class="p-title"><b>POPULAR NEWS</b></h4>
+                        <h4 class="p-title"><b>NỔI BẬT TRONG TUẦN</b></h4>
                         {{#each popular}}
 
                         <a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
-                            <div class="wh-100x abs-tlr"><img src="/images/sp/{{ID}}/main_thumbs.jpg" alt=""></div>
+                            <div class="wh-100x abs-tlr"><img src="/images/sp/{{ProID}}/main_thumbs.jpg" alt=""></div>
                             <div class="ml-120 min-h-100x">
-                                <h6><b>{{TieuDe}}</b></h6>
+                                <h6 class="font-weight-bold">
+                                    <a href="/products/{{ProID}}" class="btn btn-sm btn-outline-primary"
+                                        title="View details">
+                                        {{TieuDe}}
+                                    </a>
+                                </h6>
                                 <h6 class="color-lite-black pt-10">
                                     <i class="color-primary mr-5 font-12 fa fa-clock-o" aria-hidden="true"></i>
                                     {{day}}/{{month}}/{{year}}
