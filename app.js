@@ -10,7 +10,7 @@ var path = require('path');
 var app = express();
 // app.use(express.static('/public'));
 app.use(express.static(path.join(__dirname, '/public')));
-
+app.use('/public',express.static('public'));
 app.use(morgan('dev'));
 
 // su dung express-handlebars 
@@ -37,6 +37,7 @@ app.use(express.json());
 
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
+require('./middlewares/upload')(app);
 
 app.use(require('./middlewares/category.mdw'));
 app.use(require('./middlewares/categoryChild.mdw'));

@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>Báo điện tử</title>
+    <title>Báo Điện Tử TH16-News</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700">
 
     <!-- Stylesheets -->
@@ -34,31 +34,37 @@
                         <li>
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="true" aria-expanded="false">
-                                Hi,<strong>{{authUser.HoTen}}</strong>
+                                Chào, <strong>{{authUser.HoTen}}</strong>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
 
                                 <a class="dropdown-item" href="/account/profile/{{authUser.ID}}">
                                     <i class="fa fa-user" aria-hidden="true"></i>
-                                    &nbsp; Profile
+                                    &nbsp; Thông tin cá nhân
                                 </a>
+                                <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="/account/uppost">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                &nbsp; Thêm Bài Viết
+                                            </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/account/editpassword/{{authUser.ID}}">
                                     <i class="fa fa-key" aria-hidden="true"></i>
-                                    &nbsp; Change Password
+                                    &nbsp; Đổi mật khẩu
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:$('#frmLogout').submit();">
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    &nbsp; Sign Out
+                                    &nbsp; Đăng xuất
                                 </a>
                             </div>
                         </li>
 
                         {{else}}
 
-                        <li><a href="/account/register">Register</a></li>
-                        <li><a href="/account/login">Sign in</a></li>
+                        <li><a href="/account/login">Đăng nhập</a></li>
+                        <li class="list-inline-item">/</li>
+                        <li><a href="/account/register">Đăng ký</a></li>
                         {{/if}}
 
                     </ul>

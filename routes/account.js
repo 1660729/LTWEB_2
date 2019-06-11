@@ -80,6 +80,10 @@ router.get('/login', (req, res, next) => {
     res.render('vwAccount/login', { layout: false });
 })
 
+router.get('/uppost', (req, res, next) => {
+    res.render('vwAccount/uppost');
+})
+
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err)
@@ -101,14 +105,6 @@ router.post('/login', (req, res, next) => {
         });
     })(req, res, next);
 })
-
-// router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
-
-// router.get('/auth/facebook/callback',
-//     passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/account/login' }),
-//     function(req, res) {
-//         res.redirect('/');
-//     });
 
 router.post('/logout', restricted, (req, res, next) => {
     req.logout();
