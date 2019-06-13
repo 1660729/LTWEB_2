@@ -8,7 +8,6 @@
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
   <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
   <link rel="stylesheet" href="/dependencies/fontawesome.css">
-  <link rel="stylesheet" href="/styles/importer.css">
   <style>
     body {
       background-color: white;
@@ -59,7 +58,7 @@
             aria-expanded="false"> Chào, <strong>{{authUser.HoTen}} </strong></a>
           <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
             <a class="dropdown-item" href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a>
-            <a class="dropdown-item" href="/account/uppost">Thêm Bài Viết</a>
+            <a class="dropdown-item" href="/products/uppost">Thêm Bài Viết</a>
             <a class="dropdown-item" href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a>
             <a class="dropdown-item" href="javascript:$('#frmLogout').submit();">Đăng xuất</a>
           </div>
@@ -82,7 +81,6 @@
 
 
     <!--SCRIPTS-->
-    <script src="/dependencies/sails.io.js"></script>
     <script src="/dependencies/lodash.js"></script>
     <script src="/dependencies/jquery.min.js"></script>
     <script src="/dependencies/vue.js"></script>

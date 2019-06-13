@@ -80,10 +80,6 @@ router.get('/login', (req, res, next) => {
     res.render('vwAccount/login', { layout: false });
 })
 
-router.get('/uppost', (req, res, next) => {
-    res.render('vwAccount/uppost');
-})
-
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err)
