@@ -5,100 +5,64 @@
     <title>Đăng nhập</title>
     <meta charset="utf-8">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
-        body {
-            font-family: "Lato", sans-serif;
+        .wrapper {
+            margin-top: 80px;
+            margin-bottom: 20px;
         }
-
-
-
-        .main-head {
-            height: 150px;
-            background: #FFF;
-
+    
+        .form-signin {
+            max-width: 420px;
+            padding: 30px 38px 66px;
+            margin: 0 auto;
+            background-color: #eee;
+            border: 3px dotted rgba(0, 0, 0, 0.1);
         }
-
-        .sidenav {
-            height: 100%;
-            background-color: #000;
-            overflow-x: hidden;
-            padding-top: 20px;
+    
+        .form-signin-heading {
+            text-align: center;
+            margin-bottom: 30px;
         }
-
-
-        .main {
-            padding: 0px 10px;
+    
+        .form-control {
+            position: relative;
+            font-size: 16px;
+            height: auto;
+            padding: 10px;
         }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
+    
+        input[type="text"] {
+            margin-bottom: 0px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
-
-        @media screen and (max-width: 450px) {
-            .login-form {
-                margin-top: 10%;
-            }
-
-            .register-form {
-                margin-top: 10%;
-            }
+    
+        input[type="password"] {
+            margin-bottom: 20px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
-
-        @media screen and (min-width: 768px) {
-            .main {
-                margin-left: 40%;
-            }
-
-            .sidenav {
-                width: 40%;
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                left: 0;
-            }
-
-            .login-form {
-                margin-top: 80%;
-            }
-
-            .register-form {
-                margin-top: 20%;
-            }
-        }
-
-
-        .login-main-text {
-            margin-top: 20%;
-            padding: 60px;
-            color: #fff;
-        }
-
-        .login-main-text h2 {
-            font-weight: 300;
-        }
-
-        .btn-black {
-            background-color: #000 !important;
-            color: #fff;
+    
+        .colorgraph {
+            height: 7px;
+            border-top: 0;
+            background: #c4e17f;
+            border-radius: 5px;
+            background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+            background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+            background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+            background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
         }
     </style>
 </head>
 
 <body>
-    <div class="sidenav">
-        <div class="login-main-text">
-            <h2>TRANG ĐĂNG NHẬP</h2>
-            <p>Bạn vui lòng đăng nhập để sử dụng hết các chức năng.</p>
-        </div>
-    </div>
-    <div class="main">
-        <div class="col-md-6 col-sm-12">
-            <div class="login-form">
-                {{#if err_message}}
+    <div class = "container">
+	<div class="wrapper">
+        {{#if err_message}}
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -106,135 +70,19 @@
                     {{err_message}}
                 </div>
                 {{/if}}
-                <form method="POST">
-                    <div class="form-group">
-                        <label>User Name</label>
-                        <input type="text" name="username" class="form-control" placeholder="Tên đăng nhập">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
-                    </div>
-                    <button type="submit" class="btn btn-black">Đăng nhập</button>
-                    <a href="/account/register" class="btn btn-secondary" role="button" aria-pressed="true">Đăng ký</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+		<form method="POST" action="/account/login" method="post" name="Login_Form" class="form-signin">       
+		    <h3 class="form-signin-heading">Chào mừng! Đăng nhập ngay nào</h3>
+			  <hr class="colorgraph"><br>
+			  
+			  <input type="text" class="form-control" name="username" placeholder="Tài khoản" required="" autofocus="" />
+			  <input type="password" class="form-control" name="password" placeholder="Mật khẩu" required=""/>     		  
+			 
+			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Đăng nhập</button> 
+              <a href="/account/register" class="btn btn-lg btn-danger btn-block" role="button" aria-pressed="true">Đăng ký</a>
+              <a href="/" class="btn btn-lg btn-success btn-block" role="button" aria-pressed="true">Trang chủ</a>			
+		</form>			
+	</div>
+</div>
 </body>
 
 </html>
-
-
-{{!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <title>Login</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        body,
-        html {
-            height: 100%;
-            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMC8yOS8xMiKqq3kAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAABHklEQVRIib2Vyw6EIAxFW5idr///Qx9sfG3pLEyJ3tAwi5EmBqRo7vHawiEEERHS6x7MTMxMVv6+z3tPMUYSkfTM/R0fEaG2bbMv+Gc4nZzn+dN4HAcREa3r+hi3bcuu68jLskhVIlW073tWaYlQ9+F9IpqmSfq+fwskhdO/AwmUTJXrOuaRQNeRkOd5lq7rXmS5InmERKoER/QMvUAPlZDHcZRhGN4CSeGY+aHMqgcks5RrHv/eeh455x5KrMq2yHQdibDO6ncG/KZWL7M8xDyS1/MIO0NJqdULLS81X6/X6aR0nqBSJcPeZnlZrzN477NKURn2Nus8sjzmEII0TfMiyxUuxphVWjpJkbx0btUnshRihVv70Bv8ItXq6Asoi/ZiCbU6YgAAAABJRU5ErkJggg==);
-            /* background-color: yellow; */
-        }
-
-        .has-search .form-control {
-            padding-left: 2.375rem;
-        }
-
-        .has-search .form-control-feedback {
-            position: absolute;
-            z-index: 2;
-            display: block;
-            width: 2.375rem;
-            height: 2.375rem;
-            line-height: 2.375rem;
-            text-align: center;
-            pointer-events: none;
-            color: #aaa;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container-fluid h-100">
-        <div class="row justify-content-center align-items-center h-100">
-            <div class="col-sm-4 col-md-3">
-                {{#if err_message}}
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    {{err_message}}
-                </div>
-                {{/if}}
-
-                <form method="POST">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input class="form-control form-control-lg border-right-0 border" placeholder="User name"
-                                type="text" name="username" autofocus value="vinh">
-                            <span class="input-group-append">
-                                <div class="input-group-text bg-white">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input class="form-control form-control-lg border-right-0 border" placeholder="Password"
-                                type="password" name="password" value="123456">
-                            <span class="input-group-append">
-                                <div class="input-group-text bg-white">
-                                    <i class="fa fa-key" aria-hidden="true"></i>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group d-flex">
-                        <div>
-                            <a class="btn btn-lg btn-outline-info btn-block" href="/" role="button">
-                                <i class="fa fa-home" aria-hidden="true"></i>
-                                Trang chủ
-                            </a>
-                        </div>
-                        <div class="flex-fill ml-1">
-                            <button class="btn btn-info btn-lg btn-block" type="submit">
-                                <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                Đăng nhập
-                            </button>
-                        </div>
-                    </div>
-                    <a href="/account/forgotpassword" id="forgot_pswd">Quên mật khẩu?</a>
-                    <a class="float-right" href="/account/register" id="forgot_pswd">Đăng ký</a>
-                    <p style="text-align:center"> hoặc </p>
-                    <div class="form-group">
-                        <a href="/auth/facebook">
-                            <button class="btn btn-primary btn-lg active ml-6" type="button">
-                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                &nbsp; Facebook
-                            </button>
-                        </a>
-
-                        <button class="btn btn-danger btn-lg active" type="button">
-                            <i class="fa fa-google-plus" aria-hidden="true"></i>
-                            &nbsp;Google+
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-
-</html> --}}
