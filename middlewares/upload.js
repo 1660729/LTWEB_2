@@ -6,7 +6,7 @@ var authmdw = require('./auth.mdw');
 module.exports = function (app) {
   var storage = multer.diskStorage({
       destination: function (req, file, cb) {
-          cb(null, './public/images/post')
+          cb(null, './public/images')
       },
       filename: function (req, file, cb) {
           cb(null, file.originalname)
@@ -14,7 +14,7 @@ module.exports = function (app) {
   });
 
   app.post('/account/uppost', restricted, (req, res, next) => {
-      multer({ storage }).single('AnhDaiDien')(req, res, err => {
+      multer({ storage }).single('file')(req, res, err => {
           if (err) {
             console.log(entity)
               return res.json({
@@ -22,8 +22,7 @@ module.exports = function (app) {
               });
           }
           var entity = req.body;
-          entity.AnhDaiDien = '/public/images/post/' + req.file.filename;
-          entity.id_author = '1';
+          entity.AnhDaiDien = '/public/images/' + req.file.filename;
 
           console.log(entity);
 

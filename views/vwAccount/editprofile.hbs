@@ -6,12 +6,6 @@
 <script>
   $(function () {
 
-    //$('#txtDOB').datetimepicker({
-      //format: 'd/m/Y',
-      //timepicker: false,
-      //mask: true,
-    //});
-
     $('#editprofileForm').validate({
       rules: {
         NguoiDung: {
@@ -67,11 +61,12 @@
   </div>
   {{/if}}
 
+
   <div class="row justify-content-center">
     <div class="col-sm-6 ">
       <div class="card shadow ">
         <h5 class="card-header">
-          Change profile
+          Thay đổi thông tin cá nhân
         </h5>
         <div class="card-body">
 
@@ -88,26 +83,22 @@
             <input type="text" class="form-control" id="txtEmail" name="Email" value="{{this.editprofile.Email}}">
           </div>
           <div class="form-group">
-            <label for="txtDOB">Date of birth (dd/mm/yyyy)</label>
-            <input type="text" class="form-control" id="txtDOB" name="dob">
+            <label for="txtDOB">Ngày sinh</label>
+            <input type="date" class="form-control" id="txtDOB" name="dob">
           </div>
         </div>
 
         <div class="card-footer float-left">
           <a class="btn btn-outline-primary" href="/account/profile/{{this.editprofile.ID}}" role="button" title="Back">
             <i class="fa fa-backward" aria-hidden="true"></i>
-            Back
+            Trở lại
           </a>
           <button type="submit" class="btn btn-success float-right">
             <i class="fa fa-check" aria-hidden="true"></i>
-            Update
+            Cập nhật
           </button>
-        </div>
-        
+        </div>        
       </div>
-  
     </div>
   </div>
-
-
 </form>

@@ -5,6 +5,12 @@ var morgan = require('morgan');
 var createError = require('http-errors');
 var numeral = require('numeral');
 var path = require('path');
+var multer  = require('multer');
+var upload = multer({ dest: 'upload/'});
+var fs = require('fs');
+var handlebars = require('handlebars');
+handlebars.registerHelper('dateformat', require('helper-dateformat'))
+
 // var productModel = require('./models/product.model');
 
 var app = express();
