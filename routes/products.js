@@ -3,6 +3,14 @@ var productModel = require('../models/product.model');
 
 var router = express.Router();
 
+router.get('/add', (req, res, next) => {
+    res.render('vwProducts/add');
+  })
+
+router.get('/uppost', (req, res, next) => {
+    res.render('vwProducts/uppost');
+  })
+  
 router.get('/:id', (req, res, next) => {
     var id = req.params.id;
     if (isNaN(id)) {

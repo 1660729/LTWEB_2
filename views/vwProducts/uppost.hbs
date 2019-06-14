@@ -1,0 +1,136 @@
+<script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
+{{#section 'css'}}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+
+{{#section 'js'}}
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            cloudServices: {
+                tokenUrl: 'https://40026.cke-cs.com/token/dev/KfpkgsMLg4H3MScxXYcy7tQSOnwlgQzrxdgVstsi5dBdn3S4PYlHS0cwq8Vm',
+                uploadUrl: 'https://40026.cke-cs.com/easyimage/upload/'
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+<script>
+    $(function () {
+        $('#NgayDang').datetimepicker({
+            // format: 'd/m/Y H:i'
+            format: 'Y/m/d',
+            timepicker: false,
+            mask: true,
+        });
+        $('#file').fileinput({
+            theme: 'fa',
+            dropZoneEnabled: false,
+            allowedFileExtensions: ['png', 'jpg', 'gif'],
+            uploadClass: 'btn btn-success',
+            uploadUrl: '/public/images/',
+            uploadAsync: false,
+        });
+
+        tinymce.init({
+            selector: '#text-right',
+            menubar: false,
+            height: 600,
+            plugins: 'paste image link autolink lists table media',
+            toolbar: [
+                'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+                'forecolor backcolor',
+                'table link image media',
+            ],
+            image_caption: true,
+        });
+    })
+</script>
+{{/section}}
+<div class="container">
+    <h2 class="mt-5">Đăng bài viết mới</h2>
+    <div class="shadow p-3 mb-5 bg-white rounded mt-5">
+        <form action="/products/uppost" method="POST" enctype="multipart/form-data">
+            <div class="btn btn-primary btn-sm float-left">
+                <span>Chọn ảnh tiêu đề</span>
+                <input type="file" name="file">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Tiêu đề</span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="Username"
+                    aria-describedby="basic-addon1" id="TieuDe" name="TieuDe">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Chuyên mục</label>
+                </div>
+                <select class="custom-select" id="ChuyenMucChaID" name="ChuyenMucChaID">
+                    <option selected>Choose...</option>
+                    <option value="1">Bóng Đá</option>
+                    <option value="2">Kinh Doanh</option>
+                    <option value="3">Pháp Luật</option>
+                    <option value="4">Showbiz</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Chuyên mục con</label>
+                </div>
+                <select class="custom-select" id="ChuyenMucConID" name="ChuyenMucConID">
+                    <option selected>Choose...</option>
+                    <option value="1">Bóng đá Việt Nam</option>
+                    <option value="2">Ngoại Hạng Anh</option>
+                    <option value="3">Doanh Nhân</option>
+                    <option value="4">Bất Động Sản</option>
+                    <option value="5">Vụ Án Nổi Tiếng</option>
+                    <option value="6">Trọng Án</option>
+                    <option value="7">Sao Việt</option>
+                    <option value="8">Sao Hollywood Và Các Nước Khác</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Tag</span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="Username"
+                    aria-describedby="basic-addon1" id="Nhan" name="Nhan">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Ngày đăng</span>
+                </div>
+                <input type="date" class="form-control" id="NgayDang" name="NgayDang">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Nội dung tóm tắt</span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="Username"
+                    aria-describedby="basic-addon1" id="NDTomTat" name="NDTomTat">
+            </div>
+            <textarea name="NoiDung" id="editor">
+    </textarea>
+            <div class="text-right">
+                <button type="submit" class="btn btn-outline-success mt-5">Thêm bài viết</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+    CKEDITOR.replace('editor');
+
+    $('#datepicker').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+
+</script>

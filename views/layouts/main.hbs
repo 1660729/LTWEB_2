@@ -1,130 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
-    <title>Báo điện tử</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700">
-
-    <!-- Stylesheets -->
-
-    <link href="/plugin-frameworks/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="/fonts/ionicons.css" rel="stylesheet" type="text/css">
-    <link href="/common/styles.css" rel="stylesheet" type="text/css">
-
-    {{{_sections.css}}}
+  <title>Báo Điện Tử TH16-News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+  <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
+  <link rel="stylesheet" href="/dependencies/fontawesome.css">
+  <style>
+    body {
+      background-color: #fff;
+    }
+  
+    body {
+      margin-top: 20px;
+    }
+  
+    .video-js {
+      width: 300px;
+      height: 150px;
+    }
+  
+    .vjs-fluid {
+      padding-top: 56.25%
+    }
+  
+    @font-face {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Merriweather Regular'), local('Merriweather-Regular'), url(https://fonts.gstatic.com/s/merriweather/v20/u-440qyriQwlOrhSvowK_l5-cSZMZ-Y.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+    }
+  
+    /* cyrillic */
+    @font-face {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Merriweather Regular'), local('Merriweather-Regular'), url(https://fonts.gstatic.com/s/merriweather/v20/u-440qyriQwlOrhSvowK_l5-eCZMZ-Y.woff2) format('woff2');
+      unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+  
+    /* vietnamese */
+    @font-face {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Merriweather Regular'), local('Merriweather-Regular'), url(https://fonts.gstatic.com/s/merriweather/v20/u-440qyriQwlOrhSvowK_l5-cyZMZ-Y.woff2) format('woff2');
+      unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+    }
+  
+    /* latin-ext */
+    @font-face {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Merriweather Regular'), local('Merriweather-Regular'), url(https://fonts.gstatic.com/s/merriweather/v20/u-440qyriQwlOrhSvowK_l5-ciZMZ-Y.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+  
+    /* latin */
+    @font-face {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Merriweather Regular'), local('Merriweather-Regular'), url(https://fonts.gstatic.com/s/merriweather/v20/u-440qyriQwlOrhSvowK_l5-fCZM.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    .carousel-item {
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+  </style>
+  {{{_sections.css}}}
 </head>
 
 <body>
-    <header>
-        <div class="bg-191">
-            <div class="container">
-                <div class="oflow-hidden color-ash font-9 text-sm-center ptb-sm-5">
-
-                    <form id="frmLogout" action="/account/logout" method="POST"></form>
-                    <ul class="float-right float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-5 ">
-
-                        {{#if isAuthenticated}}
-
-                        <li>
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                aria-haspopup="true" aria-expanded="false">
-                                Hi,<strong>{{authUser.HoTen}}</strong>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-
-                                <a class="dropdown-item" href="/account/profile/{{authUser.ID}}">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    &nbsp; Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/account/editpassword/{{authUser.ID}}">
-                                    <i class="fa fa-key" aria-hidden="true"></i>
-                                    &nbsp; Change Password
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:$('#frmLogout').submit();">
-                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    &nbsp; Sign Out
-                                </a>
-                            </div>
-                        </li>
-
-                        {{else}}
-
-                        <li><a href="/account/register">Register</a></li>
-                        <li><a href="/account/login">Sign in</a></li>
-                        {{/if}}
-
-                    </ul>
-
-                </div>
-                <!-- top-menu -->
-            </div>
-            <!-- container -->
-        </div>
-        <!-- bg-191 -->
-
-        <div class="container">
-            <a class="logo" href="/"><img src="/images/logo-black.png" alt="Logo"></a>
-
-            <a class="right-area src-btn" href="#">
-                <i class="active src-icn ion-search"></i>
-                <i class="close-icn ion-close"></i>
+  <div id="page-wrap ">
+    <header id="page-header" class="navbar clearfix fixed-top navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between">
+      <a class="navbar-brand mr-0" href="/"><img class="logo" alt="logo" src="/images/logo.png" /></a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          {{#each lcCategories}}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              {{TenLoaiCha}}
             </a>
-            <div class="src-form">
-                <form>
-                    <input type="text" placeholder="Search here">
-                    <button type="submit"><i class="ion-search"></i></a></button>
-                </form>
+            {{#each lcCategoriesChild}}
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">{{TenLoaiCon}}</a>
             </div>
-            <!-- src-form -->
-
-            <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
-
-            <ul class="main-menu" id="main-menu">
-                {{#each lcCategories}}
-                {{!-- <li><a href="#">NEWS</a></li> --}}
-                <li class="drop-down"><a href="#">{{TenLoaiCha}}<i class="ion-arrow-down-b"></i></a>
-                    <ul class="drop-down-menu drop-down-inner">
-                        {{#each lcCategoriesChild}}
-                        <li><a href="#">{{TenLoaiCon}}</a></li>
-                        {{!-- <li><a href="#">PAGE 2</a></li> --}}
-                        {{/each}}
-                    </ul>
-                </li>
-                {{/each}}
-                
-
-            </ul>
-            <div class="clearfix"></div>
+            {{/each}}
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="navbar-nav flex-row">
+        <!-- Only in desktop nav -->
+        <form id="frmLogout" action="/account/logout" method="POST"></form>
+        {{#if isAuthenticated}}
+        <div class="nav-item dropdown d-none d-sm-block">
+          <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false"> Chào, <strong>{{authUser.HoTen}} </strong></a>
+          <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
+            <a class="dropdown-item" href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a>
+            <a class="dropdown-item" href="/products/uppost">Thêm Bài Viết</a>
+            <a class="dropdown-item" href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a>
+            <a class="dropdown-item" href="javascript:$('#frmLogout').submit();">Đăng xuất</a>
+          </div>
         </div>
-        <!-- container -->
+        {{else}}
+        <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/account/login">Đăng nhập</a>
+        <li class="nav-item nav-link">/</li>
+        <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/account/register">Đăng ký</a>
+      </div>
+      {{/if}}
+      
     </header>
 
+    <br><br>
 
-    <div>
-        {{{body}}}
+    <!-- Body -->
+    <div class="container-fluid">
+      {{{body}}}
     </div>
 
 
 
+    <!--SCRIPTS-->
+    <script src="/dependencies/lodash.js"></script>
+    <script src="/dependencies/jquery.min.js"></script>
+    <script src="/dependencies/vue.js"></script>
+    <script src="/dependencies/vue-router.js"></script>
+    <script src="/dependencies/bootstrap-4/bootstrap-4.bundle.js"></script>
+    <script src="/dependencies/cloud.js"></script>
+    <script src="/dependencies/moment.js"></script>
+    <script src="/dependencies/parasails.js"></script>
+    <script src="/js/cloud.setup.js"></script>
+    <script src="/js/components/ajax-button.component.js"></script>
+    <script src="/js/components/ajax-form.component.js"></script>
+    <script src="/js/components/js-timestamp.component.js"></script>
+    <script src="/js/components/modal.component.js"></script>
+    <script src="/js/utilities/open-stripe-checkout.js"></script>
+    <script src="/js/pages/498.page.js"></script>
+    <script src="/js/pages/account/account-overview.page.js"></script>
+    <script src="/js/pages/account/edit-password.page.js"></script>
+    <script src="/js/pages/account/edit-profile.page.js"></script>
+    <script src="/js/pages/contact.page.js"></script>
+    <script src="/js/pages/dashboard/welcome.page.js"></script>
+    <script src="/js/pages/entrance/confirmed-email.page.js"></script>
+    <script src="/js/pages/entrance/forgot-password.page.js"></script>
+    <script src="/js/pages/entrance/login.page.js"></script>
+    <script src="/js/pages/entrance/new-password.page.js"></script>
+    <script src="/js/pages/entrance/signup.page.js"></script>
+    <script src="/js/pages/faq.page.js"></script>
+    <script src="/js/pages/homepage.page.js"></script>
+    <script src="/js/pages/legal/privacy.page.js"></script>
+    <script src="/js/pages/legal/terms.page.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <script src="/plugin-frameworks/jquery-3.2.1.min.js"></script>
-    <script src="/plugin-frameworks/tether.min.js"></script>
-    <script src="/plugin-frameworks/bootstrap.js"></script>
-    <script src="/common/scripts.js"></script>
-
-    {{{_sections.js}}}
 </body>
 
 </html>

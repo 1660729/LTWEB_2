@@ -5,12 +5,15 @@ var morgan = require('morgan');
 var createError = require('http-errors');
 var numeral = require('numeral');
 var path = require('path');
+var handlebars = require('handlebars');
+handlebars.registerHelper('dateformat', require('helper-dateformat'))
+
 // var productModel = require('./models/product.model');
 
 var app = express();
 // app.use(express.static('/public'));
 app.use(express.static(path.join(__dirname, '/public')));
-
+app.use('/public',express.static('public'));
 app.use(morgan('dev'));
 
 // su dung express-handlebars 
@@ -37,6 +40,7 @@ app.use(express.json());
 
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
+require('./middlewares/upload')(app);
 
 app.use(require('./middlewares/category.mdw'));
 app.use(require('./middlewares/categoryChild.mdw'));
@@ -50,7 +54,6 @@ app.use(require('./middlewares/auth.mdw'));
 app.use('/account', require('./routes/account'));
 app.use('/categories', require('./routes/categories'));
 app.use('/products', require('./routes/products'));
-app.use('/qlTag', require('./routes/qlTag'));
 
 // render toi trang home
 app.get('/', (req, res) => {
@@ -91,7 +94,18 @@ app.use((err, req, res, next) => {
 
 })
 
-var port = 3100;
+var accountRouter = require('./routes/account');
+app.use('/account', accountRouter);
+
+var categoriesRouter = require('./routes/categories');
+app.use('/categories', categoriesRouter);
+
+var productsRouter = require('./routes/products');
+app.use('/products', productsRouter);
+
+
+
+var port = 3000;
 app.listen(port, () => {
     console.log(`server is running at port http://localhost:${port}`);
 });
