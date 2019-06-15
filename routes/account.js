@@ -5,6 +5,7 @@ var passport = require('passport');
 var nodemailer = require('nodemailer');
 var userModel = require('../models/user.model');
 var restricted = require('../middlewares/restricted');
+var writerRestricted = require('../middlewares/writerRestricted');
 // var profileModel = require('../models/profile.model');
 
 var router = express.Router();
@@ -104,7 +105,7 @@ router.post('/login', (req, res, next) => {
 
 router.post('/logout', restricted, (req, res, next) => {
     req.logout();
-    res.redirect('/account/login');
+    res.redirect('/');
 })
 
 router.get('/profile/:id', restricted, (req, res, next) => {

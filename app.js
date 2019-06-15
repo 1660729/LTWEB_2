@@ -103,6 +103,11 @@ app.use('/categories', categoriesRouter);
 var productsRouter = require('./routes/products');
 app.use('/products', productsRouter);
 
+var writerRouter = require('./routes/writer');
+app.use('/writer', writerRouter);
+
+var editorRouter = require('./routes/editor');
+app.use('/editor',editorRouter);
 
 
 var port = 3000;

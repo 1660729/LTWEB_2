@@ -76,4 +76,80 @@ module.exports.countCat = function(date, catName){
             resolve(docs);
         })
     })
-}  
+} 
+//
+module.exports.findAllWithTagName = function(date, tagName, start_offset){
+    return new Promise((resolve,reject)=>{
+        post.find({"NgayDang": { $lte: date },"Nhan": tagName, "TinhTrang": true},(err,docs)=>{
+            if(err) reject(err);
+            resolve(docs);
+        }).sort({ ngayDang: -1 }).limit(6).skip(start_offset);
+    })
+}
+//
+module.exports.countTag = function(date, tagName){
+    return new Promise((resolve,reject)=>{
+        post.count ({"NgayDang": { $lte: date },"Nhan": tagName, "TinhTrang": true},(err,docs)=>{
+            if(err) reject(err);
+            resolve(docs);
+        })
+    })
+}
+//
+module.exports.GetPostByUser = function(idUser){
+    return new Promise((resolve,reject)=>{
+        post.find({idAuther: idUser},(err,docs)=>{
+            if(err) reject(err);
+            if(docs) resolve(docs);
+        })
+    })
+}
+module.exports.countGetPostByUser = function(idUser){
+    return new Promise((resolve,reject)=>{
+        post.count({idAuther: idUser},(err,total)=>{
+            if(err) reject(err);
+            if(total) resolve(total);
+        })
+    })
+}
+module.exports.getAllNotApproved = ()=>{
+    return new Promise((resolve,reject)=>{
+        post.find({duyet: false},(err,docs)=>{
+            if(err) reject(err);
+            if(docs) resolve(docs);
+        })
+    })
+}
+module.exports.countGetNotApproved = ()=>{
+    return new Promise((resolve,reject)=>{
+        post.count({duyet: false},(err,docs)=>{
+            if(err) reject(err);
+            if(docs) resolve(docs);
+        })
+    })
+}
+module.exports.getAllByCatName = (catName)=>{
+    return new Promise((resolve,reject)=>{
+        post.find({chuyenMuc: catName},(err,docs)=>{
+            if(err) reject(err);
+            if(docs) resolve(docs);
+        })
+    })
+}
+module.exports.countGetAllByCatName = (catName)=>{
+    return new Promise((resolve,reject)=>{
+        post.count({chuyenMuc: catName},(err,docs)=>{
+            if(err) reject(err);
+            if(docs) resolve(docs);
+        })
+    })
+}
+
+module.exports.approvedPost = (id)=>{
+    return new Promise((resolve,reject)=>{
+        post.findByIdAndUpdate(id,{$set:{"TinhTrang": true}},(err,docs)=>{
+            if(err) reject(err);
+            if(docs) resolve(docs);
+        })
+    })
+}
