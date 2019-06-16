@@ -4,7 +4,7 @@ module.exports = (req,res,next)=>{
         return res.redirect(`/account/login?retUrl=${retUrl}`);
     }
     var user = req.user;
-    if(req.user.role!= 'editor'){
+    if(req.user.PhanQuyen!= '1'){
         return res.redirect('/error');
     }
     next();

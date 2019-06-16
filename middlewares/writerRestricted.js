@@ -3,7 +3,7 @@ module.exports = (req,res,next)=>{
         var retUrl = req.originalUrl;
         return res.redirect(`/account/login?retUrl=${retUrl}`);
     }
-    if(req.user.role !== 'writer'){
+    if(req.user.PhanQuyen !== '2'){
         return res.redirect('/error');
     }
     next();

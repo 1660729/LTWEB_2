@@ -68,13 +68,13 @@
                   <li><a href="#">Chào, <strong>{{authUser.HoTen}}</a>
                     <ul class="dropdown">
                       <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
-                      {{#if writer}}
-                      <li><a href="/writer/uppost">Thêm Bài Viết</a></li>
-                      <li><a href="/writer/loadpost">Bài Đã Viết</a></li>
+                      {{!-- {{#if writer}} --}}
+                      <li><a href="/products/uppost">Thêm Bài Viết</a></li>
+                      {{!-- <li><a href="/writer/loadpost">Bài Đã Viết</a></li>
                       {{/if}}
                       {{#if editor}}
                         <li><a href="/editor/browsepost">Đang chờ duyệt</a></li>
-                        {{/if}}
+                        {{/if}} --}}
                       <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
                       <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
                     </ul>
