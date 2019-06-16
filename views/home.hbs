@@ -1,668 +1,280 @@
-
-  <section class="hero-area">
-        <!-- Preloader -->
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="circle-preloader">
-                <div class="a" style="--n: 5;">
-                    <div class="dot" style="--i: 0;"></div>
-                    <div class="dot" style="--i: 1;"></div>
-                    <div class="dot" style="--i: 2;"></div>
-                    <div class="dot" style="--i: 3;"></div>
-                    <div class="dot" style="--i: 4;"></div>
-                </div>
+<section class="hero-area">
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="circle-preloader">
+            <div class="a" style="--n: 5;">
+                <div class="dot" style="--i: 0;"></div>
+                <div class="dot" style="--i: 1;"></div>
+                <div class="dot" style="--i: 2;"></div>
+                <div class="dot" style="--i: 3;"></div>
+                <div class="dot" style="--i: 4;"></div>
             </div>
-        </div>
-
-        <div class="hero-post-slides owl-carousel">
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post d-flex flex-wrap">
-                <!-- Post Thumbnail -->
-                <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url(img/blog-img/13.jpg);"></div>
-                <!-- Post Content -->
-                <div class="slide-post-content h-100 d-flex align-items-center">
-                    <div class="slide-post-text">
-                        <p class="post-date" data-animation="fadeIn" data-delay="100ms">MAY 01, 2018 / lifestyle</p>
-                        <a href="#" class="post-title" data-animation="fadeIn" data-delay="300ms">
-                            <h2>We’ve Launched More May Gal Meets Glam Collection Dresses</h2>
-                        </a>
-                        <p class="post-excerpt" data-animation="fadeIn" data-delay="500ms">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-                        <a href="#" class="btn nikki-btn" data-animation="fadeIn" data-delay="700ms">Read More</a>
-                    </div>
-                    <!-- Page Count -->
-                    <div class="page-count"></div>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post d-flex flex-wrap">
-                <!-- Post Thumbnail -->
-                <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url(img/blog-img/14.jpg);"></div>
-                <!-- Post Content -->
-                <div class="slide-post-content h-100 d-flex align-items-center">
-                    <div class="slide-post-text">
-                        <p class="post-date" data-animation="fadeIn" data-delay="100ms">MAY 01, 2018 / lifestyle</p>
-                        <a href="#" class="post-title" data-animation="fadeIn" data-delay="300ms">
-                            <h2>A Closer Look At Our Front Porch Items From Lowe’s</h2>
-                        </a>
-                        <p class="post-excerpt" data-animation="fadeIn" data-delay="500ms">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-                        <a href="#" class="btn nikki-btn" data-animation="fadeIn" data-delay="700ms">Read More</a>
-                    </div>
-                    <!-- Page Count -->
-                    <div class="page-count"></div>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post d-flex flex-wrap">
-                <!-- Post Thumbnail -->
-                <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url(img/blog-img/15.jpg);"></div>
-                <!-- Post Content -->
-                <div class="slide-post-content h-100 d-flex align-items-center">
-                    <div class="slide-post-text">
-                        <p class="post-date" data-animation="fadeIn" data-delay="100ms">MAY 01, 2018 / lifestyle</p>
-                        <a href="#" class="post-title" data-animation="fadeIn" data-delay="300ms">
-                            <h2>Answering Your Most Frequent International Transportation Questions</h2>
-                        </a>
-                        <p class="post-excerpt" data-animation="fadeIn" data-delay="500ms">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-                        <a href="#" class="btn nikki-btn" data-animation="fadeIn" data-delay="700ms">Read More</a>
-                    </div>
-                    <!-- Page Count -->
-                    <div class="page-count"></div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <div class="container">
-    <div class="card-body">
-
-
-        <h4 class="p-title"><b>TIN MỚI</b></h4>
-        <div class="row">
-
-            {{#each this.products}}
-            <div class="col-lg-4 mb-3">
-                <div class="card h-100 shadow-sm">
-                    <img src="{{AnhDaiDien}}" class="card-img-top"
-                        style="width:335px; height:250px" alt="{{TieuDe}}" title="{{TieuDe}}">
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="/products/{{ProID}}" class="font-weight-bold" title="View details">
-                                {{TieuDe}}
-                            </a>
-                        </h4>
-                        <h6 class="card-title">
-                            <i class="color-primary mr-5 font-12 fa fa-clock-o" aria-hidden="true"></i>
-                            {{day}}/{{month}}/{{year}}
-                        </h6>
-                        <p class="card-text">
-                            <i class="color-primary mr-5 font-12 ion-ios-bolt"></i>&nbsp;
-                            {{TenLoaiCon}}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            {{/each}}
-            <div class="clearfix visible-md visible-lg"></div>
         </div>
     </div>
-</div>
-<section>
+
+    <div class="hero-post-slides owl-carousel">
+
+        <!-- Single Hero Post -->
+        <div class="single-hero-post d-flex flex-wrap">
+            {{#each this.products}}
+            <!-- Post Thumbnail -->
+            <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url({{AnhDaiDien}});"></div>
+            <!-- Post Content -->
+            <div class="slide-post-content h-100 d-flex align-items-center">
+                <div class="slide-post-text">
+                    <p class="post-date" data-animation="fadeIn" data-delay="100ms">Ngày {{day}}/{{month}}/{{year}}</p>
+                    <a href="/products/{{ProID}}" class="post-title" data-animation="fadeIn" data-delay="300ms">
+                        <h2>{{TieuDe}}</h2>
+                    </a>
+                    <p class="post-excerpt" data-animation="fadeIn" data-delay="500ms">{{NDTomTat}}</p>
+                    <a href="/products/{{ProID}}" class="btn nikki-btn" data-animation="fadeIn" data-delay="700ms">Read
+                        More</a>
+                </div>
+                <!-- Page Count -->
+                <div class="page-count"></div>
+            </div>
+            {{/each}}
+        </div>
+
+        <!-- Single Hero Post -->
+        <div class="single-hero-post d-flex flex-wrap">
+            {{#each productsViewCat}}
+            <!-- Post Thumbnail -->
+            <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url({{AnhDaiDien}});"></div>
+            <!-- Post Content -->
+            <div class="slide-post-content h-100 d-flex align-items-center">
+                <div class="slide-post-text">
+                    <p class="post-date" data-animation="fadeIn" data-delay="100ms">Ngày {{day}}/{{month}}/{{year}}</p>
+                    <a href="/products/{{ProID}}" class="post-title" data-animation="fadeIn" data-delay="300ms">
+                        <h2>{{TieuDe}}</h2>
+                    </a>
+                    <p class="post-excerpt" data-animation="fadeIn" data-delay="500ms">{{NDTomTat}}</p>
+                    <a href="/products/{{ProID}}" class="btn nikki-btn" data-animation="fadeIn" data-delay="700ms">Read
+                        More</a>
+                </div>
+                <!-- Page Count -->
+                <div class="page-count"></div>
+            </div>
+            {{/each}}
+        </div>
+
+        <!-- Single Hero Post -->
+        <div class="single-hero-post d-flex flex-wrap">
+            {{#each popular}}
+            <!-- Post Thumbnail -->
+            <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url({{AnhDaiDien}});"></div>
+            <!-- Post Content -->
+            <div class="slide-post-content h-100 d-flex align-items-center">
+                <div class="slide-post-text">
+                    <p class="post-date" data-animation="fadeIn" data-delay="100ms">Ngày {{day}}/{{month}}/{{year}}</p>
+                    <a href="/products/{{ProID}}" class="post-title" data-animation="fadeIn" data-delay="300ms">
+                        <h2>{{TieuDe}}</h2>
+                    </a>
+                    <p class="post-excerpt" data-animation="fadeIn" data-delay="500ms">{{NDTomTat}}</p>
+                    <a href="/products/{{ProID}}" class="btn nikki-btn" data-animation="fadeIn" data-delay="700ms">Read
+                        More</a>
+                </div>
+                <!-- Page Count -->
+                <div class="page-count"></div>
+            </div>
+            {{/each}}
+        </div>
+
+    </div>
+</section>
+
+<section class="blog-content-area section-padding-100">
     <div class="container">
-        <div class="row ">
 
-            <div class="col-md-12 col-lg-8">
-                <h4 class="p-title"><b>XEM NHIỀU</b></h4>
-                <div class="row">
+        <div class="row justify-content-center">
+            <!-- Blog Posts Area -->
+            <div class="col-12 col-lg-8">
+                <div class="blog-posts-area">
+                    <div class="single-widget-area mb-30">
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h6>BÀI VIẾT MỚI NHẤT</h6>
+                        </div>
+                        <div class="row">
+                            {{#each this.products}}
 
-                    <div class="col-sm-6">
-                        {{#each productsview}}
-                        <div class="card mb-3" style="width: 730px;">
-                            <div class="row no-gutters">
-                                <div class="col-md-4">
-                                    <img src="/images/sp/{{ProID}}/main_thumbs.jpg" class="card-img" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            <a href="/products/{{ProID}}" class="font-weight-bold" title="View details">
-                                                {{TieuDe}}
-                                            </a>
-                                        </h4>
-                                        <p class="card-text"><small class="text-muted">
-                                                <i class="color-primary mr-5 font-12 fa fa-clock-o"
-                                                    aria-hidden="true"></i>
-                                                {{day}}/{{month}}/{{year}}
-                                            </small>
-                                        </p>
-                                        <p class="card-text">
-                                            <i class="color-primary mr-5 font-12 ion-ios-bolt"></i>&nbsp;
-                                            {{TenLoaiCon}}
-                                        </p>
+                            <!-- Single Blog Post -->
+                            <div class="col-12 col-sm-6">
+                                <div class="single-blog-post mb-50">
+                                    <!-- Thumbnail -->
+                                    <div class="post-thumbnail">
+                                        <a href="/products/{{ProID}}"><img src="{{AnhDaiDien}}" alt=""></a>
+                                    </div>
+                                    <!-- Content -->
+                                    <div class="post-content">
+                                        <p class="post-date">Ngày {{day}}/{{month}}/{{year}}</p>
+                                        <a href="/products/{{ProID}}" class="post-title">
+                                            <h4>{{TieuDe}}</h4>
+                                        </a>
+                                        <p class="post-excerpt">{{TenLoaiCon}}</p>
                                     </div>
                                 </div>
                             </div>
+                            {{/each}}
                         </div>
-                        {{/each}}
-                        <div class="clearfix visible-md visible-lg"></div>
                     </div>
-
                 </div>
 
-                <h4 class="p-title"><b>TIN MỚI MỌI CHUYỆN MỤC</b></h4>
-                <div class="row">
-                    {{#each productsViewCat}}
-                    <div class="card mb-3" style="width: 730px;">
-
-                        <h4 class="pt-20">
-                            <img src="/images/sp/{{ProID}}/main_thumbs.jpg" alt="{{TieuDe}}">
-                            <a href="/products/{{ProID}}" class="font-weight-bold" title="View details">
-                                {{TieuDe}}
-                            </a>
-                        </h4>
-                        <ul class="list-li-mr-20 pt-10 mb-30">
-                            <h6 class="color-lite-black pt-10">
-                                <i class="color-primary mr-5 font-12 fa fa-clock-o" aria-hidden="true"></i>
-                                {{day}}/{{month}}/{{year}}
-                            </h6>
-                            <p class="card-text">
-                                <i class="color-primary mr-5 font-12 ion-ios-bolt"></i>&nbsp;
-                                {{TenLoaiCon}}
-                            </p>
-                        </ul>
-                    </div>
-                    {{/each}}
-                    <div class="clearfix visible-md visible-lg"></div>
-                </div>
+                <!-- Pager -->
+                <ol class="nikki-pager">
+                    <li><a href="#"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Trước</a></li>
+                    <li><a href="#">Sau <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+                </ol>
             </div>
 
-            <div class="d-none d-md-block d-lg-none col-md-3"></div>
-            <div class="col-md-6 col-lg-4">
-                <div class="pl-20 pl-md-0">
-                    <div class="mtb-50">
-                        <h4 class="p-title"><b>NỔI BẬT TRONG TUẦN</b></h4>
-                        {{#each popular}}
+            <!-- Blog Sidebar Area -->
+            <div class="col-12 col-sm-9 col-md-6 col-lg-4">
+                <div class="post-sidebar-area">
 
-                        <a class="oflow-hidden pos-relative mb-20 dplay-block" href="#">
-                            <div class="wh-100x abs-tlr"><img src="/images/sp/{{ProID}}/main_thumbs.jpg" alt=""></div>
-                            <div class="ml-120 min-h-100x">
-                                <h6 class="font-weight-bold">
-                                    <a href="/products/{{ProID}}" class="btn btn-sm btn-outline-primary"
-                                        title="View details">
-                                        {{TieuDe}}
-                                    </a>
-                                </h6>
-                                <h6 class="color-lite-black pt-10">
-                                    <i class="color-primary mr-5 font-12 fa fa-clock-o" aria-hidden="true"></i>
-                                    {{day}}/{{month}}/{{year}}
-                                </h6>
-                                <p class="card-text">
-                                    <i class="color-primary mr-5 font-12 ion-ios-bolt"></i>&nbsp;
-                                    {{TenLoaiCon}}
-                                </p>
-                            </div>
-                        </a>
-                        {{/each}}
-                        <div class="clearfix visible-md visible-lg"></div>
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area mb-30">
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h6>About Me</h6>
+                        </div>
+                        <!-- Thumbnail -->
+                        <div class="about-thumbnail">
+                            <img src="img/blog-img/about-me.jpg" alt="">
+                        </div>
+                        <!-- Content -->
+                        <div class="widget-content text-center">
+                            <img src="img/core-img/signature.png" alt="">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ipsum adipisicing</p>
+                        </div>
                     </div>
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area mb-30">
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h6>Subscribe &amp; Follow</h6>
+                        </div>
+                        <!-- Widget Social Info -->
+                        <div class="widget-social-info text-center">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-rss"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area mb-30">
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h6>XEM NHIỀU</h6>
+                        </div>
+
+                        <!-- Single Latest Posts -->
+                        {{#each productsview}}
+                        <div class="single-latest-post d-flex">
+                            <div class="post-thumb">
+                                <img src="{{AnhDaiDien}}" alt="">
+                            </div>
+                            <div class="post-content">
+                                <a href="#" class="post-title">
+                                    <h6>{{TieuDe}}</h6>
+                                </a>
+                                <a href="#" class="post-author"><span>by</span> Administrator</a>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area mb-30">
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h6>Tin mới mọi chuyên mục</h6>
+                        </div>
+
+                        <!-- Single Latest Posts -->
+                        {{#each productsViewCat}}
+                        <div class="single-latest-post d-flex">
+                            <div class="post-thumb">
+                                <img src="{{AnhDaiDien}}" alt="">
+                            </div>
+                            <div class="post-content">
+                                <a href="#" class="post-title">
+                                    <h6>{{TieuDe}}</h6>
+                                </a>
+                                <a href="#" class="post-author"><span>by</span> Administrator</a>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area mb-30">
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h6>Nổi bật trong tuần</h6>
+                        </div>
+
+                        <!-- Single Latest Posts -->
+                        {{#each popular}}
+                        <div class="single-latest-post d-flex">
+                            <div class="post-thumb">
+                                <img src="{{AnhDaiDien}}" alt="">
+                            </div>
+                            <div class="post-content">
+                                <a href="#" class="post-title">
+                                    <h6>{{TieuDe}}</h6>
+                                </a>
+                                <a href="#" class="post-author"><span>by</span> Administrator</a>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area mb-30">
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h6>Đăng kí nhận tin</h6>
+                        </div>
+                        <!-- Content -->
+                        <div class="newsletter-content">
+                            <p>Theo dõi bản tin của chúng tôi để nhận thông báo về các cập nhật mới, bài viết, thông
+                                tin, v.v.</p>
+                            <form action="#" method="post">
+                                <input type="email" name="email" class="form-control" placeholder="Email của bạn ...">
+                                <button><i class="fa fa-send"></i></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area mb-30">
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h6>Thẻ phổ biến</h6>
+                        </div>
+                        <!-- Tags -->
+                        <ol class="popular-tags d-flex flex-wrap">
+                            <li><a href="#">LifeStyle</a></li>
+                            <li><a href="#">Sport</a></li>
+                            <li><a href="#">Fashion</a></li>
+                            <li><a href="#">Photography</a></li>
+                            <li><a href="#">Yoga</a></li>
+                            <li><a href="#">Health Food</a></li>
+                            <li><a href="#">Summer Holiday</a></li>
+                            <li><a href="#">Supper Food</a></li>
+                            <li><a href="#">Life</a></li>
+                        </ol>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-    <!-- ##### Hero Area Start ##### -->
-    {{!-- <section class="hero-area">
-        <!-- Preloader -->
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="circle-preloader">
-                <div class="a" style="--n: 5;">
-                    <div class="dot" style="--i: 0;"></div>
-                    <div class="dot" style="--i: 1;"></div>
-                    <div class="dot" style="--i: 2;"></div>
-                    <div class="dot" style="--i: 3;"></div>
-                    <div class="dot" style="--i: 4;"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-post-slides owl-carousel">
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post d-flex flex-wrap">
-                <!-- Post Thumbnail -->
-                <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url(img/blog-img/13.jpg);"></div>
-                <!-- Post Content -->
-                <div class="slide-post-content h-100 d-flex align-items-center">
-                    <div class="slide-post-text">
-                        <p class="post-date" data-animation="fadeIn" data-delay="100ms">MAY 01, 2018 / lifestyle</p>
-                        <a href="#" class="post-title" data-animation="fadeIn" data-delay="300ms">
-                            <h2>We’ve Launched More May Gal Meets Glam Collection Dresses</h2>
-                        </a>
-                        <p class="post-excerpt" data-animation="fadeIn" data-delay="500ms">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-                        <a href="#" class="btn nikki-btn" data-animation="fadeIn" data-delay="700ms">Read More</a>
-                    </div>
-                    <!-- Page Count -->
-                    <div class="page-count"></div>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post d-flex flex-wrap">
-                <!-- Post Thumbnail -->
-                <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url(img/blog-img/14.jpg);"></div>
-                <!-- Post Content -->
-                <div class="slide-post-content h-100 d-flex align-items-center">
-                    <div class="slide-post-text">
-                        <p class="post-date" data-animation="fadeIn" data-delay="100ms">MAY 01, 2018 / lifestyle</p>
-                        <a href="#" class="post-title" data-animation="fadeIn" data-delay="300ms">
-                            <h2>A Closer Look At Our Front Porch Items From Lowe’s</h2>
-                        </a>
-                        <p class="post-excerpt" data-animation="fadeIn" data-delay="500ms">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-                        <a href="#" class="btn nikki-btn" data-animation="fadeIn" data-delay="700ms">Read More</a>
-                    </div>
-                    <!-- Page Count -->
-                    <div class="page-count"></div>
-                </div>
-            </div>
-
-            <!-- Single Hero Post -->
-            <div class="single-hero-post d-flex flex-wrap">
-                <!-- Post Thumbnail -->
-                <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url(img/blog-img/15.jpg);"></div>
-                <!-- Post Content -->
-                <div class="slide-post-content h-100 d-flex align-items-center">
-                    <div class="slide-post-text">
-                        <p class="post-date" data-animation="fadeIn" data-delay="100ms">MAY 01, 2018 / lifestyle</p>
-                        <a href="#" class="post-title" data-animation="fadeIn" data-delay="300ms">
-                            <h2>Answering Your Most Frequent International Transportation Questions</h2>
-                        </a>
-                        <p class="post-excerpt" data-animation="fadeIn" data-delay="500ms">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-                        <a href="#" class="btn nikki-btn" data-animation="fadeIn" data-delay="700ms">Read More</a>
-                    </div>
-                    <!-- Page Count -->
-                    <div class="page-count"></div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- ##### Hero Area End ##### -->
-
-    <!-- ##### Blog Content Area Start ##### -->
-    <section class="blog-content-area section-padding-100">
-        <div class="container">
-
-            <div class="row justify-content-center">
-                <!-- Blog Posts Area -->
-                <div class="col-12 col-lg-8">
-                    <div class="blog-posts-area">
-                        <div class="row">
-
-                            <!-- Featured Post Area -->
-                            <div class="col-12">
-                                <div class="featured-post-area mb-50">
-                                    <!-- Thumbnail -->
-                                    <div class="post-thumbnail mb-30">
-                                        <a href="#"><img src="img/blog-img/12.jpg" alt=""></a>
-                                    </div>
-                                    <!-- Featured Post Content -->
-                                    <div class="featured-post-content">
-                                        <p class="post-date">MAY 7, 2018 / lifestyle</p>
-                                        <a href="#" class="post-title">
-                                            <h2>A Closer Look At Our Front Porch Items From Lowe’s</h2>
-                                        </a>
-                                        <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
-                                    </div>
-                                    <!-- Post Meta -->
-                                    <div class="post-meta d-flex align-items-center justify-content-between">
-                                        <!-- Author Comments -->
-                                        <div class="author-comments">
-                                            <a href="#"><span>by</span> Colorlib</a>
-                                            <a href="#">03 <span>Comments</span></a>
-                                        </div>
-                                        <!-- Social Info -->
-                                        <div class="social-info">
-                                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-sm-6">
-                                <div class="single-blog-post mb-50">
-                                    <!-- Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <a href="#"><img src="img/blog-img/1.jpg" alt=""></a>
-                                    </div>
-                                    <!-- Content -->
-                                    <div class="post-content">
-                                        <p class="post-date">MAY 10, 2018 / life</p>
-                                        <a href="#" class="post-title">
-                                            <h4>Travel Tuesday: Answering Your Most Frequent International Transportation Questions</h4>
-                                        </a>
-                                        <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-sm-6">
-                                <div class="single-blog-post mb-50">
-                                    <!-- Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <a href="#"><img src="img/blog-img/2.jpg" alt=""></a>
-                                    </div>
-                                    <!-- Content -->
-                                    <div class="post-content">
-                                        <p class="post-date">MAY 17, 2018 / Sport</p>
-                                        <a href="#" class="post-title">
-                                            <h4>A Closer Look At Our Front Porch Items From Lowe’s</h4>
-                                        </a>
-                                        <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-sm-6">
-                                <div class="single-blog-post mb-50">
-                                    <!-- Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <a href="#"><img src="img/blog-img/3.jpg" alt=""></a>
-                                    </div>
-                                    <!-- Content -->
-                                    <div class="post-content">
-                                        <p class="post-date">MAY 22, 2018 / lifestyle</p>
-                                        <a href="#" class="post-title">
-                                            <h4>Wedding Guest Style: From Beach Casual to Black-Tie Formal</h4>
-                                        </a>
-                                        <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-sm-6">
-                                <div class="single-blog-post mb-50">
-                                    <!-- Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <a href="#"><img src="img/blog-img/4.jpg" alt=""></a>
-                                    </div>
-                                    <!-- Content -->
-                                    <div class="post-content">
-                                        <p class="post-date">MAY 25, 2018 / Fashion</p>
-                                        <a href="#" class="post-title">
-                                            <h4>5 Things to Know About Dating a Bisexual</h4>
-                                        </a>
-                                        <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-sm-6">
-                                <div class="single-blog-post mb-50">
-                                    <!-- Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <a href="#"><img src="img/blog-img/5.jpg" alt=""></a>
-                                    </div>
-                                    <!-- Content -->
-                                    <div class="post-content">
-                                        <p class="post-date">MAY 29, 2018 / food</p>
-                                        <a href="#" class="post-title">
-                                            <h4>7 Things Wealthy Women Do With Their Money That You Can Do Too</h4>
-                                        </a>
-                                        <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-sm-6">
-                                <div class="single-blog-post mb-50">
-                                    <!-- Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <a href="#"><img src="img/blog-img/6.jpg" alt=""></a>
-                                    </div>
-                                    <!-- Content -->
-                                    <div class="post-content">
-                                        <p class="post-date">Jun 02, 2018 / SummerHoliday</p>
-                                        <a href="#" class="post-title">
-                                            <h4>The 10 Most Instagrammable Spots in San Diego</h4>
-                                        </a>
-                                        <p class="post-excerpt">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Pager -->
-                    <ol class="nikki-pager">
-                        <li><a href="#"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Newer</a></li>
-                        <li><a href="#">Older <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
-                    </ol>
-                </div>
-
-                <!-- Blog Sidebar Area -->
-                <div class="col-12 col-sm-9 col-md-6 col-lg-4">
-                    <div class="post-sidebar-area">
-
-                        <!-- ##### Single Widget Area ##### -->
-                        <div class="single-widget-area mb-30">
-                            <!-- Title -->
-                            <div class="widget-title">
-                                <h6>About Me</h6>
-                            </div>
-                            <!-- Thumbnail -->
-                            <div class="about-thumbnail">
-                                <img src="img/blog-img/about-me.jpg" alt="">
-                            </div>
-                            <!-- Content -->
-                            <div class="widget-content text-center">
-                                <img src="img/core-img/signature.png" alt="">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ipsum adipisicing</p>
-                            </div>
-                        </div>
-
-                        <!-- ##### Single Widget Area ##### -->
-                        <div class="single-widget-area mb-30">
-                            <!-- Title -->
-                            <div class="widget-title">
-                                <h6>Subscribe &amp; Follow</h6>
-                            </div>
-                            <!-- Widget Social Info -->
-                            <div class="widget-social-info text-center">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-rss"></i></a>
-                            </div>
-                        </div>
-
-                        <!-- ##### Single Widget Area ##### -->
-                        <div class="single-widget-area mb-30">
-                            <!-- Title -->
-                            <div class="widget-title">
-                                <h6>Latest Posts</h6>
-                            </div>
-
-                            <!-- Single Latest Posts -->
-                            <div class="single-latest-post d-flex">
-                                <div class="post-thumb">
-                                    <img src="img/blog-img/lp1.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="#" class="post-title">
-                                        <h6>10 Books to Read This Summer If You Want to Improve Yourself</h6>
-                                    </a>
-                                    <a href="#" class="post-author"><span>by</span> Colorlib</a>
-                                </div>
-                            </div>
-
-                            <!-- Single Latest Posts -->
-                            <div class="single-latest-post d-flex">
-                                <div class="post-thumb">
-                                    <img src="img/blog-img/lp2.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="#" class="post-title">
-                                        <h6>Why I Decided to Give up My Favorite Foods and Go Vegan</h6>
-                                    </a>
-                                    <a href="#" class="post-author"><span>by</span> Colorlib</a>
-                                </div>
-                            </div>
-
-                            <!-- Single Latest Posts -->
-                            <div class="single-latest-post d-flex">
-                                <div class="post-thumb">
-                                    <img src="img/blog-img/lp3.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="#" class="post-title">
-                                        <h6>The 10 Most Instagrammable Spots in San Diego</h6>
-                                    </a>
-                                    <a href="#" class="post-author"><span>by</span> Colorlib</a>
-                                </div>
-                            </div>
-
-                            <!-- Single Latest Posts -->
-                            <div class="single-latest-post d-flex">
-                                <div class="post-thumb">
-                                    <img src="img/blog-img/lp4.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="#" class="post-title">
-                                        <h6>5 Things to Know About Dating a Bisexual</h6>
-                                    </a>
-                                    <a href="#" class="post-author"><span>by</span> Colorlib</a>
-                                </div>
-                            </div>
-
-                            <!-- Single Latest Posts -->
-                            <div class="single-latest-post d-flex">
-                                <div class="post-thumb">
-                                    <img src="img/blog-img/lp5.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="#" class="post-title">
-                                        <h6>How to Take Critical Feedback at Work (Like a Boss)</h6>
-                                    </a>
-                                    <a href="#" class="post-author"><span>by</span> Colorlib</a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- ##### Single Widget Area ##### -->
-                        <div class="single-widget-area mb-30">
-                            <!-- Adds -->
-                            <a href="#"><img src="img/blog-img/add.png" alt=""></a>
-                        </div>
-
-                        <!-- ##### Single Widget Area ##### -->
-                        <div class="single-widget-area mb-30">
-                            <!-- Title -->
-                            <div class="widget-title">
-                                <h6>Newsletter</h6>
-                            </div>
-                            <!-- Content -->
-                            <div class="newsletter-content">
-                                <p>Subscribe our newsletter for get notification about new updates, information discount, etc.</p>
-                                <form action="#" method="post">
-                                    <input type="email" name="email" class="form-control" placeholder="Your email">
-                                    <button><i class="fa fa-send"></i></button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- ##### Single Widget Area ##### -->
-                        <div class="single-widget-area mb-30">
-                            <!-- Title -->
-                            <div class="widget-title">
-                                <h6>popular tags</h6>
-                            </div>
-                            <!-- Tags -->
-                            <ol class="popular-tags d-flex flex-wrap">
-                                <li><a href="#">LifeStyle</a></li>
-                                <li><a href="#">Sport</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Photography</a></li>
-                                <li><a href="#">Yoga</a></li>
-                                <li><a href="#">Health Food</a></li>
-                                <li><a href="#">Summer Holiday</a></li>
-                                <li><a href="#">Supper Food</a></li>
-                                <li><a href="#">Life</a></li>
-                            </ol>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Blog Content Area End ##### -->
-
-    <!-- ##### Instagram Area Start ##### -->
-    <div class="follow-us-instagram">
-        <div class="instagram-content d-flex flex-wrap align-items-center">
-
-            <!-- Single Instagram Slide -->
-            <div class="single-instagram">
-                <img src="img/blog-img/insta1.jpg" alt="">
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-
-            <!-- Single Instagram Slide -->
-            <div class="single-instagram">
-                <img src="img/blog-img/insta2.jpg" alt="">
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-
-            <!-- Single Instagram Slide -->
-            <div class="single-instagram">
-                <img src="img/blog-img/insta3.jpg" alt="">
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-
-            <!-- Single Instagram Slide -->
-            <div class="single-instagram">
-                <img src="img/blog-img/insta4.jpg" alt="">
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-
-            <!-- Single Instagram Slide -->
-            <div class="single-instagram">
-                <img src="img/blog-img/insta5.jpg" alt="">
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-
-            <!-- Single Instagram Slide -->
-            <div class="single-instagram">
-                <img src="img/blog-img/insta6.jpg" alt="">
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-
-            <!-- Single Instagram Slide -->
-            <div class="single-instagram">
-                <img src="img/blog-img/insta7.jpg" alt="">
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-
-            <!-- Single Instagram Slide -->
-            <div class="single-instagram">
-                <img src="img/blog-img/insta8.jpg" alt="">
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-        </div>
-    </div> --}}
