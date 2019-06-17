@@ -5,8 +5,12 @@ module.exports = {
         return db.load('select * from chuyenmuccha');
     },
 
+    allChild: () => {
+        return db.load('select * from chuyenmuccon');
+    },
+
     single: id => {
-        return db.load(`select * from chuyenmuccha where ID = ${id}`);
+        return db.load(`select * from chuyenmuccon where ID = ${id}`);
     },
 
     // load chuyen muc cha
@@ -28,17 +32,17 @@ module.exports = {
     },
 
     add: entity => {
-        return db.add('chuyenmuccha', entity);
+        return db.add('chuyenmuccon', entity);
     },
 
     update: entity => {
-        var id = entity.CatID;
-        delete entity.CatID;
-        return db.update('chuyenmuccha', 'ID', entity, id);
+        var id = entity.ID;
+        delete entity.ID;
+        return db.update('chuyenmuccon', 'ID', entity, id);
     },
 
     delete: id => {
-        return db.delete('chuyenmuccha', 'ID', id)
+        return db.delete('chuyenmuccon', 'ID', id)
     }
 
 };

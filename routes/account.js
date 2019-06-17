@@ -285,4 +285,53 @@ router.post('/forgotpassword', (req, res, next) => {
     })
 });
 
+router.get('/', restricted, (req, res) => {
+    userModel.all()
+        .then(rows => {
+            res.render('vwAccount/index', {
+                nguoidung: rows
+            })
+        })
+        .catch(error => {
+            res.render('error', { layout: false });
+        });
+})
+
+router.get('/edit/:id', (req, res, next) => {
+    var id = req.params.id;
+    if (isNaN(id)) {
+        res.render('vwCategories/edit', { error: true });
+        return;
+    }
+
+    userModel.single(id)
+        .then(rows => {
+            if (rows.length > 0) {
+                var nguoidung = rows[0];
+                res.render('vwAccount/edit', {
+                    error: false,
+                    nguoidung
+                });
+            } else {
+                res.render('vwAccount/edit', {
+                    error: true
+                });
+            }
+        }).catch(next);
+})
+
+router.post('/update', restricted, (req, res, next) => {
+    userModel.updateUser(req.body).then(n => {
+        res.redirect('/account');
+    }).catch(next);
+
+})
+
+router.post('/delete', restricted, (req, res, next) => {
+    userModel.delete(+req.body.ID).then(n => {
+        res.redirect('/account');
+    }).catch(next);
+})
+
+
 module.exports = router;

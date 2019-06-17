@@ -30,6 +30,12 @@ module.exports = {
         return db.update('taikhoan', 'ID', entity, id);
     },
 
+    updateUser: entity => {
+        var id = entity.ID;
+        delete entity.ID;
+        return db.update('taikhoan', 'ID', entity, id);
+    },
+
     delete: id => {
         return db.delete('taikhoan', 'ID', id);
     },

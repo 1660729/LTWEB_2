@@ -8,12 +8,10 @@ var path = require('path');
 var handlebars = require('handlebars');
 handlebars.registerHelper('dateformat', require('helper-dateformat'))
 
-// var productModel = require('./models/product.model');
-
 var app = express();
 // app.use(express.static('/public'));
 app.use(express.static(path.join(__dirname, '/public')));
-app.use('/public',express.static('public'));
+app.use('/public', express.static('public'));
 app.use(morgan('dev'));
 
 // su dung express-handlebars 
@@ -37,6 +35,13 @@ app.use(express.urlencoded({
 
 app.use(express.json());
 
+handlebars.registerHelper('if_eq', function(a, b, opts) {
+    if (a == b) {
+        return opts.fn(this);
+    } else {
+        return opts.inverse(this);
+    }
+});
 
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
@@ -49,11 +54,14 @@ app.use(require('./middlewares/popularWeek.mdw'));
 app.use(require('./middlewares/productViews.mdw'));
 app.use(require('./middlewares/productNewsCat.mdw'));
 app.use(require('./middlewares/sameCategory.mdw'));
+app.use(require('./middlewares/comment.mdw'));
 app.use(require('./middlewares/auth.mdw'));
 
 app.use('/account', require('./routes/account'));
 app.use('/categories', require('./routes/categories'));
 app.use('/products', require('./routes/products'));
+app.use('/writer', require('./routes/writer'));
+app.use('/editor', require('./routes/editor'));
 
 // render toi trang home
 app.get('/', (req, res) => {
@@ -94,20 +102,7 @@ app.use((err, req, res, next) => {
 
 })
 
-var accountRouter = require('./routes/account');
-app.use('/account', accountRouter);
 
-var categoriesRouter = require('./routes/categories');
-app.use('/categories', categoriesRouter);
-
-var productsRouter = require('./routes/products');
-app.use('/products', productsRouter);
-
-var writerRouter = require('./routes/writer');
-app.use('/writer', writerRouter);
-
-var editorRouter = require('./routes/editor');
-app.use('/editor',editorRouter);
 
 
 var port = 3000;

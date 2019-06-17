@@ -1,3 +1,4 @@
+
 <section class="hero-area">
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
@@ -16,7 +17,7 @@
 
         <!-- Single Hero Post -->
         <div class="single-hero-post d-flex flex-wrap">
-            {{#each this.products}}
+            {{#each this.lcProducts}}
             <!-- Post Thumbnail -->
             <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url({{AnhDaiDien}});"></div>
             <!-- Post Content -->
@@ -38,7 +39,7 @@
 
         <!-- Single Hero Post -->
         <div class="single-hero-post d-flex flex-wrap">
-            {{#each productsViewCat}}
+            {{#each lcProductsViewCat}}
             <!-- Post Thumbnail -->
             <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url({{AnhDaiDien}});"></div>
             <!-- Post Content -->
@@ -60,7 +61,7 @@
 
         <!-- Single Hero Post -->
         <div class="single-hero-post d-flex flex-wrap">
-            {{#each popular}}
+            {{#each lcPopular}}
             <!-- Post Thumbnail -->
             <div class="slide-post-thumbnail h-100 bg-img" style="background-image: url({{AnhDaiDien}});"></div>
             <!-- Post Content -->
@@ -96,7 +97,7 @@
                             <h6>BÀI VIẾT MỚI NHẤT</h6>
                         </div>
                         <div class="row">
-                            {{#each this.products}}
+                            {{#each this.lcProducts}}
 
                             <!-- Single Blog Post -->
                             <div class="col-12 col-sm-6">
@@ -132,7 +133,7 @@
                 <div class="post-sidebar-area">
 
                     <!-- ##### Single Widget Area ##### -->
-                    <div class="single-widget-area mb-30">
+                    {{!-- <div class="single-widget-area mb-30">
                         <!-- Title -->
                         <div class="widget-title">
                             <h6>About Me</h6>
@@ -147,10 +148,10 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                 incididunt ipsum adipisicing</p>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- ##### Single Widget Area ##### -->
-                    <div class="single-widget-area mb-30">
+                    {{!-- <div class="single-widget-area mb-30">
                         <!-- Title -->
                         <div class="widget-title">
                             <h6>Subscribe &amp; Follow</h6>
@@ -165,7 +166,7 @@
                             <a href="#"><i class="fa fa-linkedin"></i></a>
                             <a href="#"><i class="fa fa-rss"></i></a>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- ##### Single Widget Area ##### -->
                     <div class="single-widget-area mb-30">
@@ -175,16 +176,18 @@
                         </div>
 
                         <!-- Single Latest Posts -->
-                        {{#each productsview}}
+                        {{#each lcProductsview}}
                         <div class="single-latest-post d-flex">
                             <div class="post-thumb">
-                                <img src="{{AnhDaiDien}}" alt="">
+                                <img src="{{AnhDaiDien}}" alt="" style="width: 150px; height: 130px">
                             </div>
                             <div class="post-content">
-                                <a href="#" class="post-title">
+                                <a href="/products/{{ProID}}" class="post-title">
                                     <h6>{{TieuDe}}</h6>
                                 </a>
-                                <a href="#" class="post-author"><span>by</span> Administrator</a>
+                                <p class="post-date">Ngày {{day}}/{{month}}/{{year}}</p>
+                                <p class="post-excerpt">{{TenLoaiCon}}</p>
+                                {{!-- <a href="#" class="post-author"><span>by</span> Administrator</a> --}}
                             </div>
                         </div>
                         {{/each}}
@@ -198,16 +201,18 @@
                         </div>
 
                         <!-- Single Latest Posts -->
-                        {{#each productsViewCat}}
+                        {{#each lcProductsViewCat}}
                         <div class="single-latest-post d-flex">
                             <div class="post-thumb">
-                                <img src="{{AnhDaiDien}}" alt="">
+                                <img src="{{AnhDaiDien}}" alt="" style="width: 150px; height: 130px">
                             </div>
                             <div class="post-content">
-                                <a href="#" class="post-title">
+                                <a href="/products/{{ProID}}" class="post-title">
                                     <h6>{{TieuDe}}</h6>
                                 </a>
-                                <a href="#" class="post-author"><span>by</span> Administrator</a>
+                                <p class="post-date">Ngày {{day}}/{{month}}/{{year}}</p>
+                                <p class="post-excerpt">{{TenLoaiCon}}</p>
+                                {{!-- <a href="#" class="post-author"><span>by</span> Administrator</a> --}}
                             </div>
                         </div>
                         {{/each}}
@@ -221,16 +226,18 @@
                         </div>
 
                         <!-- Single Latest Posts -->
-                        {{#each popular}}
+                        {{#each lcPopularWeek}}
                         <div class="single-latest-post d-flex">
                             <div class="post-thumb">
                                 <img src="{{AnhDaiDien}}" alt="">
                             </div>
                             <div class="post-content">
-                                <a href="#" class="post-title">
+                                <a href="/products/{{ProID}}" class="post-title">
                                     <h6>{{TieuDe}}</h6>
                                 </a>
-                                <a href="#" class="post-author"><span>by</span> Administrator</a>
+                                <p class="post-date">Ngày {{day}}/{{month}}/{{year}}</p>
+                                <p class="post-excerpt">{{TenLoaiCon}}</p>
+                                {{!-- <a href="#" class="post-author"><span>by</span> Administrator</a> --}}
                             </div>
                         </div>
                         {{/each}}
@@ -246,7 +253,7 @@
                         <div class="newsletter-content">
                             <p>Theo dõi bản tin của chúng tôi để nhận thông báo về các cập nhật mới, bài viết, thông
                                 tin, v.v.</p>
-                            <form action="#" method="post">
+                            <form action="javascript:;" method="post">
                                 <input type="email" name="email" class="form-control" placeholder="Email của bạn ...">
                                 <button><i class="fa fa-send"></i></button>
                             </form>
@@ -254,7 +261,7 @@
                     </div>
 
                     <!-- ##### Single Widget Area ##### -->
-                    <div class="single-widget-area mb-30">
+                    {{!-- <div class="single-widget-area mb-30">
                         <!-- Title -->
                         <div class="widget-title">
                             <h6>Thẻ phổ biến</h6>
@@ -271,7 +278,7 @@
                             <li><a href="#">Supper Food</a></li>
                             <li><a href="#">Life</a></li>
                         </ol>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

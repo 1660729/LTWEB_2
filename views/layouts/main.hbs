@@ -36,19 +36,21 @@
               <div class="classynav">
                 <ul>
                   <li><a href="/">Trang chủ</a></li>
-                  {{#each lcCategories}}
-                  <li><a href="#">{{TenLoaiCha}}</a>
+                  {{!-- {{#each lcCategories}} --}}
+                  <li><a href="#">Danh mục</a>
                     <ul class="dropdown">
                       {{#each lcCategoriesChild}}
-                      <li><a href="#">{{TenLoaiCon}}</a></li>
+                      <li><a href="/Categories/{{ID}}/products">{{TenLoaiCon}}</a></li>
                       {{/each}}
                     </ul>
                   </li>
-                  {{/each}}
-                  <li><a href="about-us.html" data-toggle="tooltip" data-placement="bottom" title="Thông tin">About</a>
+                  {{!-- {{/each}} --}}
+
+
+                  {{!-- <li><a href="about-us.html" data-toggle="tooltip" data-placement="bottom" title="Thông tin">About</a>
                   </li>
                   <li><a href="contact.html" data-toggle="tooltip" data-placement="bottom" title="Liên hệ">Contact</a>
-                  </li>
+                  </li> --}}
                 </ul>
 
                 <!-- Search Form -->
@@ -62,34 +64,83 @@
                 <!-- Social Button -->
                 <!-- Only in desktop nav -->
                 <form id="frmLogout" action="/account/logout" method="POST"></form>
+
+
                 {{#if isAuthenticated}}
+                {{#if_eq authUser.PhanQuyen 1}}
                 <div class="classynav">
-                <ul>
-                  <li><a href="#">Chào, <strong>{{authUser.HoTen}}</a>
-                    <ul class="dropdown">
-                      <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
-                      {{!-- {{#if writer}} --}}
-                      <li><a href="/products/uppost">Thêm Bài Viết</a></li>
-                      {{!-- <li><a href="/writer/loadpost">Bài Đã Viết</a></li>
+                  <ul>
+                    <li><a href="#">Chào, <strong>ADMINISTRATOR</a>
+                      <ul class="dropdown">
+                        <li><a href="/categories">quản lý danh mục</a></li>
+                        <li><a href="/account">quản lý người dùng</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
+                        {{!-- {{#if writer}} --}}                       
+                        {{!-- <li><a href="/writer/loadpost">Bài Đã Viết</a></li>
                       {{/if}}
                       {{#if editor}}
                         <li><a href="/editor/browsepost">Đang chờ duyệt</a></li>
                         {{/if}} --}}
-                      <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
-                      <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
-                    </ul>
-                  </li>
+                        <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
+                        <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
+                      </ul>
+                    </li>
                   </ul>
-                {{else}}
-                <div class="top-social-info">
-                  <a href="/account/login" data-toggle="tooltip" data-placement="bottom" title="Đăng nhập">Login</a>
-                  <li class="list-inline-item">/</li>
-                  <a href="/account/register" data-toggle="tooltip" data-placement="bottom" title="Đăng ký">Register</a>
-                </div>
-                {{/if}}
-              </div>
-              <!-- Nav End -->
-            </div>
+                  {{/if_eq}}
+                  {{#if_eq authUser.PhanQuyen 0}}
+                  <div class="classynav">
+                    <ul>
+                      <li><a href="#">Chào, <strong>{{authUser.HoTen}}</a>
+                        <ul class="dropdown">
+                          <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
+                          {{!-- {{#if writer}} --}}
+                          {{!-- <li><a href="/products/uppost">Thêm Bài Viết</a></li> --}}
+                          {{!-- <li><a href="/writer/loadpost">Bài Đã Viết</a></li>
+                      {{/if}}
+                      {{#if editor}}
+                        <li><a href="/editor/browsepost">Đang chờ duyệt</a></li>
+                        {{/if}} --}}
+                          <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
+                          <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                    {{/if_eq}}
+                    {{#if_eq authUser.PhanQuyen 2}}
+                    <div class="classynav">
+                      <ul>
+                        <li><a href="#">Chào, <strong>WRITER</a>
+                          <ul class="dropdown">
+                            <li><a href="/products/uppost">Thêm Bài Viết</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
+                            {{!-- {{#if writer}} --}}
+                            
+                            {{!-- <li><a href="/writer/loadpost">Bài Đã Viết</a></li>
+                      {{/if}}
+                      {{#if editor}}
+                        <li><a href="/editor/browsepost">Đang chờ duyệt</a></li>
+                        {{/if}} --}}
+                            <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
+                            <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                      {{/if_eq}}
+                      {{else}}
+                      <div class="top-social-info">
+                        <a href="/account/login" data-toggle="tooltip" data-placement="bottom"
+                          title="Đăng nhập">Login</a>
+                        <li class="list-inline-item">/</li>
+                        <a href="/account/register" data-toggle="tooltip" data-placement="bottom"
+                          title="Đăng ký">Register</a>
+                      </div>
+
+                      {{/if}}
+                    </div>
+                    <!-- Nav End -->
+                  </div>
           </nav>
         </div>
       </div>
@@ -107,7 +158,7 @@
   <script src="/public/js/bootstrap/bootstrap.min.js"></script>
   <script src="/public/js/plugins/plugins.js"></script>
   <script src="/public/js/active.js"></script>
-
+  {{{_sections.js}}}
 </body>
 
 </html>

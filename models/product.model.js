@@ -1,11 +1,12 @@
 var db = require('../utils/db');
+var config = require('../config/default.json');
 
 module.exports = {
     all: () => {
         return db.load('select * from baiviet');
     },
 
-    // top 10 bai viet moi nhat
+    // top 10 bài viết mới nhất
     latestNews: () => {
         return db.load(`
             SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year  
@@ -24,7 +25,7 @@ module.exports = {
         `);
     },
 
-    // 10 bai viet duoc xem nhieu nhat
+    // 10 bài viết được xem nhiều nhất
     latestViews: () => {
         return db.load(`
             SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year  
@@ -34,7 +35,7 @@ module.exports = {
         `);
     },
 
-    // 4 bai viet noi bat nhat trong tuan
+    // 4 bài viết nổi bật trong tuần
     popularNews: () => {
         return db.load(`
             SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year 
@@ -44,17 +45,54 @@ module.exports = {
         `);
     },
 
-    // 5 bai viet cung chuyen muc
-    // sameCat: () => {
-    //     return db.load(`
-    //         SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year  
-    //         FROM baiviet bv JOIN chuyenmuccon con ON bv.ChuyenMucConID = con.ID            
-    //         ORDER BY bv.NgayDang desc LIMIT 0,10
-    //     `);
-    // },
+    // 5 bài viết cùng chuyên mục
+    sameCat: () => {
+        return db.load(`
+            SELECT bv.*, con.*, DAY(bv.NgayDang) AS day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year  
+            FROM baiviet bv JOIN chuyenmuccon con ON bv.ChuyenMucConID = con.ID            
+            ORDER BY bv.NgayDang desc LIMIT 0,5
+        `);
+    },
 
+
+    // xem danh sách bài viết
     allByCat: CatId => {
-        return db.load(`select * from baiviet where ChuyenMucConID = ${CatId}`);
+        return db.load(`
+            SELECT bv.*, con.*, DAY(bv.NgayDang) as day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year
+            FROM baiviet bv JOIN chuyenmuccon con 
+            ON bv.ChuyenMucConID = con.ID AND bv.ChuyenMucConID = ${CatId} 
+        `);
+    },
+
+    // đếm tổng số danh mục bài viết
+    countByCat: catId => {
+        return db.load(`select count(*) as total from baiviet where ChuyenMucConID = ${catId}`);
+    },
+
+    // phân trang
+    pageByCat: (catId, start_offset) => {
+        var lim = config.paginate.default;
+        return db.load(`
+            select bv.*, con.*, DAY(bv.NgayDang) as day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year 
+            from baiviet bv, chuyenmuccon con
+            where bv.ChuyenMucConID = con.ID and ChuyenMucConID = ${catId} limit ${lim} offset ${start_offset}
+        `);
+    },
+
+    // tìm kiếm full-text search
+    seachFullText: name => {
+        return db.load(`
+            SELECT * FROM baiviet
+            WHERE MATCH(TieuDe, NDTomTat) AGAINST('${name}');
+        `);
+    },
+
+    // danh sách bình luận
+    allComment: () => {
+        return db.load(`
+            SELECT dg.*, DAY(dg.NgayBinhLuan) AS day, MONTH(dg.NgayBinhLuan) AS month, YEAR(dg.NgayBinhLuan) AS year 
+            FROM docgia dg
+        `);
     },
 
     single: id => {
@@ -76,7 +114,7 @@ module.exports = {
     },
 
     delete: id => {
-        return db.delete('baiviet', 'ID', id)
+        return db.delete('baiviet', 'ProID', id)
     }
 
 };
