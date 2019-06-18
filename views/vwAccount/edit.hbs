@@ -1,7 +1,28 @@
-<form action="/account/update" method="POST">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card shadow mt-5 mb-5">
+                <div class="card-header text-center font-weight-bold">
+                    TRANG QUẢN TRỊ VIÊN
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center"><a href="/admin/adminControl"><i class="fa fa-snowflake-o"
+                                aria-hidden="true"></i> Trang Administrator</a></li>
+                    <li class="list-group-item text-center"><a href="/account"><i class="fa fa-users"
+                                aria-hidden="true"></i> Quản lý người dùng</a></li>
+                    <li class="list-group-item text-center"><a href="/categories"><i class="fa fa-folder-open-o"
+                                aria-hidden="true"></i> Quản lý danh mục</a></li>
+                    <li class="list-group-item text-center"><a class="" href="/products/uppost"><i class="fa fa-plus"
+                                aria-hidden="true"></i> Thêm bài viết</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="card shadow mt-5 mb-5">
+                <form action="/account/update" method="POST">
     <div class="card shadow">
         <h5 class="card-header">
-            TÀI KHOẢN
+            SỬA TÀI KHOẢN
         </h5>
         <div class="card-body">
             {{#if  this.error}}
@@ -42,20 +63,24 @@
             {{/if}}
         </div>
         <div class="card-footer text-right">
-            <a class="btn btn-outline-primary" href="/account" role="button" title="Back">
+            <a class="btn btn-info" href="/account" role="button" title="Back">
                 <i class="fa fa-backward" aria-hidden="true"></i>
-                List
+                Tài khoản
             </a>
             {{#unless this.error}}
             <button type="submit" class="btn btn-danger" formaction="/account/delete">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
-                Delete
+                Xóa
             </button>
             <button type="submit" class="btn btn-success">
                 <i class="fa fa-check" aria-hidden="true"></i>
-                Save
+                Lưu
             </button>
             {{/unless}}
         </div>
     </div>
 </form>
+            </div>
+        </div>
+    </div>
+</div>

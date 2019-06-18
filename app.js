@@ -61,6 +61,7 @@ app.use(require('./middlewares/auth.mdw'));
 app.use('/account', require('./routes/account'));
 app.use('/categories', require('./routes/categories'));
 app.use('/products', require('./routes/products'));
+app.use('/admin', require('./routes/admin'));
 app.use('/tag', require('./routes/tag'));
 
 // render toi trang home
@@ -101,9 +102,6 @@ app.use((err, req, res, next) => {
     });
 
 })
-
-
-
 
 var port = 4000;
 app.listen(port, () => {

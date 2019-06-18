@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Báo Điện Tử TH16-News</title>
-  <link rel="shortcut icon" type="image/x-icon" href="/public/images/favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/public/images/favicon.ico">
   <link rel="stylesheet" href="/public/style.css">
   <link href='https:/fonts.googleapis.com/css?family=Nunito+Sans:400,500,700|Quicksand:500,700' rel='stylesheet'
     type='text/css'>
@@ -110,11 +110,7 @@
                   <ul>
                     <li><a href="#">Chào, <strong>{{authUser.HoTen}}</a>
                       <ul class="dropdown">
-                        <li><a href="/categories">Quản lý danh mục</a></li>
-                        <li><a href="/account">Quản lý người dùng</a></li>
-                        <li><a href="/products/uppost">Thêm Bài Viết</a></li>
-                        <li><a href="/products/postmanage">Xem Tất Cả Bài Viết</a></li>
-                        <div class="dropdown-divider"></div>
+                        <li><a href="/admin/adminControl">Trang quản lý</a></li>
                         <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
                         <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
                         <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
@@ -181,6 +177,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
   <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
   <script src="https://www.google.com/recaptcha/api/siteverify"></script>
+  <script src="/public/ckeditor/ckeditor.js"></script>
+  {{!-- <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script> --}}
   <script>
     grecaptcha.ready(function () {
       grecaptcha.execute('6LfUSakUAAAAAP-DKEypC7-r7CEqFqvvlOMAHv11', { action: 'homepage' }).then(function (token) {

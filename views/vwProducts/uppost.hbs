@@ -1,15 +1,19 @@
-<script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
 {{#section 'css'}}
 <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
-{{/section}}
 
-{{#section 'js'}}
+<script src="/public/ckeditor/ckeditor.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/classic/ckeditor.js"></script>
+{{/section}}
+
+{{#section 'js'}}
+
 <script>
     ClassicEditor
         .create(document.querySelector('#editor'), {
@@ -73,9 +77,9 @@
                 Nhan: {
                     required: true
                 },
-                {{!-- NgayDang: {
+                NgayDang: {
                     required: true
-                }, --}}
+                },
                 NDTomTat: {
                     required: true
                 }
@@ -90,16 +94,16 @@
                 Nhan: {
                     required: 'Bạn vui lòng nhập tag.'
                 },
-                {{!-- NgayDang: {
+                NgayDang: {
                     required: 'Bạn vui lòng nhập ngày đăng.'
-                }, --}}
+                },
                 ChuyenMucChaID: {
                     valueNotEquals: "Vui lòng chọn chuyên mục cha."
                 },
                 ChuyenMucConID: {
                     valueNotEquals: "Vui lòng chọn chuyên mục con."
                 },
-                NDTomTat:{
+                NDTomTat: {
                     required: 'Bạn vui lòng nhập nội dung tóm tắt.'
                 }
             },
@@ -146,7 +150,7 @@
                     <label class="input-group-text" for="inputGroupSelect01">Chuyên mục</label>
                 </div>
                 <select required class="custom-select" id="ChuyenMucChaID" name="ChuyenMucChaID">
-                    <option value = "default">Choose...</option>
+                    <option value="default">Choose...</option>
                     <option value="1">Bóng Đá</option>
                     <option value="2">Ẩm thực</option>
                     <option value="3">Pháp Luật</option>
@@ -159,7 +163,7 @@
                     <label class="input-group-text" for="inputGroupSelect01">Chuyên mục con</label>
                 </div>
                 <select required class="custom-select" id="ChuyenMucConID" name="ChuyenMucConID">
-                    <option value = "default">Choose...</option>
+                    <option value="default">Choose...</option>
                     <option value="1">Bóng đá Việt Nam</option>
                     <option value="2">Ngoại Hạng Anh</option>
                     <option value="3">Ẩm thực VN</option>
@@ -180,17 +184,10 @@
                 <input required type="text" class="form-control" placeholder="" aria-label="Username"
                     aria-describedby="basic-addon1" id="Nhan" name="Nhan">
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Youtube</span>
-                </div>
-                <input required type="text" class="form-control" id="Youtube" name="Youtube">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Ngày đăng</span>
-                </div>
-                <input required type="date" class="form-control" id="NgayDang" name="NgayDang">
+            <div class="form-group">
+                <label>Ngày đăng</label>
+                <input required id="datepicker" name="NgayDang">
+
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -202,7 +199,7 @@
             <textarea name="NoiDung" id="editor">
     </textarea>
             <div class="text-right">
-                <button type="submit" class="btn btn-outline-success mt-5">Thêm bài viết</button>
+                <button type="submit" class="btn btn-success mt-5">Thêm bài viết</button>
             </div>
         </form>
     </div>
@@ -212,7 +209,8 @@
     CKEDITOR.replace('editor');
 
     $('#datepicker').datepicker({
-        uiLibrary: 'bootstrap4'
+        uiLibrary: 'bootstrap4',
+        format: 'yyyy-mm-dd'
     });
 
 </script>

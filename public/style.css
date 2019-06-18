@@ -48,7 +48,7 @@ Version: - v1.0.0
   padding: 0; }
 
 body {
-  font-family: "Barlow", sans-serif;
+  font-family: Quicksand,'Nunito Sans','Helvetica Neue',Helvetica,Roboto,Oxygen,Ubuntu,Cantarell,'Fira Sans','Droid Sans',sans-serif;
   font-size: 14px; }
 
 h1,

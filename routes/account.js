@@ -5,7 +5,7 @@ var passport = require('passport');
 var nodemailer = require('nodemailer');
 var userModel = require('../models/user.model');
 var restricted = require('../middlewares/restricted');
-var writerRestricted = require('../middlewares/writerRestricted');
+var adminRestricted = require('../middlewares/writerRestricted');
 // var profileModel = require('../models/profile.model');
 
 var router = express.Router();
@@ -119,11 +119,19 @@ router.get('/profile/:id', restricted, (req, res, next) => {
 
     userModel.single(id)
         .then(rows => {
+            if(rows[0].PhanQuyen == 1){
+                rows[0].PhanQuyen = "Admin";
+            }else if(rows[0].PhanQuyen == 0){
+                rows[0].PhanQuyen = "Độc giả";
+            }else if(rows[0].PhanQuyen == 2){
+                rows[0].PhanQuyen = "Người kiểm duyệt";
+            }else if(rows[0].PhanQuyen == 3){
+                rows[0].PhanQuyen = "Tác giả";
+            }
             if (rows.length > 0) {
                 res.render('vwAccount/profile', {
                     error: false,
                     profile: rows[0]
-
                 });
             } else {
                 res.render('vwAccount/profile', {
@@ -168,6 +176,7 @@ router.post('/editprofile/:id', restricted, (req, res, next) => {
     entity.ID = id;
 
     delete entity.dob;
+    console.log(entity);
 
     userModel.update(entity, entity.ID).then(id => {
         return res.redirect(`/account/profile/${entity.ID}`);
@@ -285,7 +294,7 @@ router.post('/forgotpassword', (req, res, next) => {
     })
 });
 
-router.get('/', restricted, (req, res) => {
+router.get('/', adminRestricted, (req, res) => {
     userModel.all()
         .then(rows => {
             res.render('vwAccount/index', {
@@ -297,7 +306,7 @@ router.get('/', restricted, (req, res) => {
         });
 })
 
-router.get('/edit/:id', (req, res, next) => {
+router.get('/edit/:id', adminRestricted, (req, res, next) => {
     var id = req.params.id;
     if (isNaN(id)) {
         res.render('vwCategories/edit', { error: true });
@@ -320,14 +329,14 @@ router.get('/edit/:id', (req, res, next) => {
         }).catch(next);
 })
 
-router.post('/update', restricted, (req, res, next) => {
+router.post('/update', adminRestricted, (req, res, next) => {
     userModel.updateUser(req.body).then(n => {
         res.redirect('/account');
     }).catch(next);
 
 })
 
-router.post('/delete', restricted, (req, res, next) => {
+router.post('/delete', adminRestricted, (req, res, next) => {
     userModel.delete(+req.body.ID).then(n => {
         res.redirect('/account');
     }).catch(next);

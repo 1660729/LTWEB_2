@@ -40,12 +40,12 @@
 <div class="container">
     {{#if this.error}}
     <div class="alert alert-danger" role="alert">
-        ID không hợp lệ! <a href="/" class="alert-link"> Quay lại List!</a>
+        ID không hợp lệ! <a href="/products" class="alert-link"> Quay lại List!</a>
     </div>
     {{else}}
     <h2 class="mt-5">CHỈNH SỬA BÀI VIẾT</h2>
     <div class="shadow p-3 mb-5 bg-white rounded mt-5">
-        <form action="/products/editpost" method="POST" enctype="multipart/form-data">
+        <form action="/products/update" method="POST" enctype="multipart/form-data">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">ID bài viết</span>
@@ -89,10 +89,10 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Youtube</span>
+                    <span class="input-group-text" id="basic-addon1">Tình Trạng</span>
                 </div>
-                <input required type="text" class="form-control" id="Youtube" value="{{this.baiviet.Youtube}}"
-                    name="Youtube">
+                <input required type="text" class="form-control" placeholder="" aria-label="Username"
+                    aria-describedby="basic-addon1" id="TinhTrang" value="{{this.baiviet.TinhTrang}}" name="TinhTrang">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -117,16 +117,16 @@
             </div>
             {{/if}}
             <div class="card-footer text-right">
-                <a class="btn btn-outline-primary" href="/producs/postmanage" role="button" title="Back">
+                <a class="btn btn-info" href="/products/postmanage" role="button" title="Back">
                     <i class="fa fa-backward" aria-hidden="true"></i>
-                    List
+                    Bài viết
                 </a>
                 {{#unless this.error}}
-                <button type="submit" class="btn btn-danger" formaction="/qlthumuccha/delete">
+                <button type="submit" class="btn btn-danger" formaction="/products/delete">
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                     Xóa
                 </button>
-                <button type="submit" class="btn btn-outline-success">
+                <button type="submit" class="btn btn-success">
                     <i class="fa fa-check" aria-hidden="true"></i>
                     Lưu
                 </button>

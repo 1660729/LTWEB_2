@@ -1,6 +1,7 @@
 var multer = require('multer');
 var postModel = require('../models/post.models');
-var restricted = require('./restricted');
+var writerRestricted = require('../middlewares/writerRestricted');
+
 var authmdw = require('./auth.mdw');
 module.exports = function (app) {
     var storage = multer.diskStorage({
@@ -12,7 +13,7 @@ module.exports = function (app) {
         }
     });
 
-    app.post('/products/uppost', restricted, (req, res, next) => {
+    app.post('/products/uppost', writerRestricted, (req, res, next) => {
         multer({ storage }).single('file')(req, res, err => {
             if (err) {
                 return res.json({

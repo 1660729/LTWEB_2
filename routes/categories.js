@@ -2,7 +2,7 @@ var express = require('express');
 var categoryModel = require('../models/category.model');
 var productModel = require('../models/product.model');
 var config = require('../config/default.json');
-var restricted = require('../middlewares/restricted');
+var adminRestricted = require('../middlewares/adminRestricted');
 
 var router = express.Router();
 
@@ -16,7 +16,7 @@ var router = express.Router();
 
 // })
 
-router.get('/', restricted, (req, res) => {
+router.get('/', adminRestricted, (req, res) => {
     categoryModel.allChild()
         .then(rows => {
             res.render('vwCategories/index', {
@@ -28,17 +28,17 @@ router.get('/', restricted, (req, res) => {
         });
 })
 
-router.get('/add', restricted, (req, res, next) => {
+router.get('/add', adminRestricted, (req, res, next) => {
     res.render('vwCategories/add');
 })
 
-router.post('/add', restricted, (req, res, next) => {
+router.post('/add', adminRestricted, (req, res, next) => {
     categoryModel.add(req.body).then(id => {
         res.render('vwCategories/add');
     }).catch(next);
 })
 
-router.get('/edit/:id', (req, res, next) => {
+router.get('/edit/:id', adminRestricted, (req, res, next) => {
     var id = req.params.id;
     if (isNaN(id)) {
         res.render('vwCategories/edit', { error: true });
@@ -61,14 +61,14 @@ router.get('/edit/:id', (req, res, next) => {
         }).catch(next);
 })
 
-router.post('/update', restricted, (req, res, next) => {
+router.post('/update', adminRestricted, (req, res, next) => {
     categoryModel.update(req.body).then(n => {
         res.redirect('/categories');
     }).catch(next);
 
 })
 
-router.post('/delete', restricted, (req, res, next) => {
+router.post('/delete', adminRestricted, (req, res, next) => {
     categoryModel.delete(+req.body.ID).then(n => {
         res.redirect('/categories');
     }).catch(next);

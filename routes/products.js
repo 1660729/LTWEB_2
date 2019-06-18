@@ -1,6 +1,8 @@
 var express = require('express');
 var productModel = require('../models/product.model');
 var postModel = require('../models/post.models');
+var writerRestricted = require('../middlewares/writerRestricted');
+var adminRestricted = require('../middlewares/adminRestricted');
 
 var router = express.Router();
 
@@ -8,9 +10,16 @@ router.get('/add', (req, res, next) => {
     res.render('vwProducts/add');
   })
 
-router.get('/postmanage', (req, res) => {
+router.get('/postmanage', adminRestricted, (req, res) => {
     postModel.all()
         .then(rows => {
+            rows.forEach(element => {
+                if(element.TinhTrang == 1){
+                    element.TinhTrang = 'Chưa được duyệt';
+                }else if(element.TinhTrang == 2){
+                    element.TinhTrang = 'Đã duyệt';
+                }
+            });
             res.render('vwProducts/postmanage', {
                 baiviet: rows
             })
@@ -20,11 +29,11 @@ router.get('/postmanage', (req, res) => {
         });
 })
 
-router.get('/uppost', (req, res, next) => {
+router.get('/uppost',adminRestricted, writerRestricted, (req, res, next) => {
     res.render('vwProducts/uppost');
   })
 
-  router.get('/editpost/:id', (req, res) => {
+  router.get('/editpost/:id', adminRestricted, writerRestricted, (req, res) => {
     var id = req.params.id;
     if(isNaN(id)){
         res.render('vwProducts/editpost',{
@@ -47,6 +56,18 @@ router.get('/uppost', (req, res, next) => {
     });
 })
 
+router.post('/editpost/update', adminRestricted, writerRestricted, (req, res, next) => {
+    categoryModel.update(req.body).then(n => {
+        res.redirect('/products');
+    }).catch(next);
+
+})
+
+router.post('/editpost/delete', adminRestricted, writerRestricted, (req, res, next) => {
+    categoryModel.delete(+req.body.ID).then(n => {
+        res.redirect('/products');
+    }).catch(next);
+})
   
 router.get('/:id', (req, res, next) => {
     var id = req.params.id;

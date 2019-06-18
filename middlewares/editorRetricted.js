@@ -5,7 +5,7 @@ module.exports = (req,res,next)=>{
     }
     var user = req.user;
     if(req.user.PhanQuyen!= '3'){
-        return res.redirect('/error');
+        return res.redirect('/404');
     }
     next();
 }
