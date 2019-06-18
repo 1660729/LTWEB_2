@@ -1,42 +1,80 @@
 var express = require('express');
 var productModel = require('../models/product.model');
-//Nhớ gọi kết nối CSDL
+var config = require('../config/default.json');
 
 var router = express.Router();
 
+// router.get('/:id/products', (req, res, next) => {
+//     var id = req.params.id;
+//     if (isNaN(id)) {
+//         res.render('vwProducts/byTag', { error: true });
+//         return;
+//     }
 
-router.get('/',async function (req, res) {
-     res.render("tag");
-    });
+//     productModel.allByTag(id).then(rows => {
 
-router.post('/insert',async function (req, res) 
-    {
-        
-        let insert=await chuyenmuccha.create({
+//         for (var c of res.locals.lcTags) {
+//             if (c.TagID === +id) {
+//                 c.active = true;
+//             }
+//         }
 
-            //Xử lý thêm xuống CSDL
-            // lấy thông tin từ thẻ input dùng req.boy.xxx
-            //lấy thông tin từ đường link thì dùng req.query.xxx (ví dụ: qlTag?id=1 dùng câu lệnh đó sẽ lấy được id là 1)
-            //gán trong js (ví dụ id:req.body.xxx)
+//         res.render('vwProducts/byTag', {
+//             error: false,
+//             empty: rows.length === 0,
+//             tags: rows
+//         });
+//     }).catch(next);
+// })
 
+router.get('/:id/products', (req, res, next) => {
+    var id = req.params.id;
+    if (isNaN(id)) {
+        res.render('vwProducts/byTag', { error: true });
+        return;
+    }
+
+    var limit = config.paginate.default;
+    var page = +req.query.page || 1;
+    if (page < 1) page = 1;
+    var start_offset = (page - 1) * limit;
+
+    Promise.all([
+        productModel.countByTag(id),
+        productModel.pageByTag(id, start_offset)
+    ]).then(([nRows, rows]) => {
+
+
+        for (var c of res.locals.lcTags) {
+            if (c.TagID === +id) {
+                c.active = true;
+            }
+
+        }
+
+        var total = nRows[0].total;
+        var nPages = Math.floor(total / limit);
+        if (total % limit > 0)
+            nPages++;
+
+        var page_numbers = [];
+        for (i = 1; i <= nPages; i++) {
+            page_numbers.push({
+                value: i,
+                active: i === +page
+            })
+        }
+
+
+        res.render('vwProducts/byTag', {
+            error: false,
+            empty: rows.length === 0,
+            tags: rows,
+            page_numbers
         })
+    }).catch(next)
 
-        //Reload lại trang với CSDL mới
-        return res.redirect('/tag')
-    })
+})
 
-    router.post('/delete',async function (req, res) 
-    {
-        
-        let insert=await chuyenmuccha.detroy({
-
-            //Xử lý xóa CSDL
-            
-        })
-
-        //Reload lại trang với CSDL mới
-        return res.redirect('/tag')
-    })
-    
 
 module.exports = router;

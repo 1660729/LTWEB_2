@@ -55,12 +55,28 @@ module.exports = {
     },
 
 
-    // xem danh sách bài viết
-    allByCat: CatId => {
+    // // xem danh sách bài viết
+    // allByCat: CatId => {
+    //     return db.load(`
+    //         SELECT bv.*, con.*, DAY(bv.NgayDang) as day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year
+    //         FROM baiviet bv JOIN chuyenmuccon con 
+    //         ON bv.ChuyenMucConID = con.ID AND bv.ChuyenMucConID = ${CatId} 
+    //     `);
+    // },
+
+    // đếm tổng số tag bài viết
+    countByTag: tagId => {
+        return db.load(`select count(*) as total from baiviet where TagID = ${tagId}`);
+    },
+
+    // phân trang
+    pageByTag: (tagId, start_offset) => {
+        var lim = config.paginate.default;
         return db.load(`
-            SELECT bv.*, con.*, DAY(bv.NgayDang) as day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year
-            FROM baiviet bv JOIN chuyenmuccon con 
-            ON bv.ChuyenMucConID = con.ID AND bv.ChuyenMucConID = ${CatId} 
+            select bv.*, t.*, DAY(bv.NgayDang) as day, MONTH(bv.NgayDang) AS month, YEAR(bv.NgayDang) AS year 
+            from baiviet bv, tag t
+            where bv.TagID = t.TagID
+            and bv.TagID = ${tagId} limit ${lim} offset ${start_offset}
         `);
     },
 
