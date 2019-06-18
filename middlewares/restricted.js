@@ -3,7 +3,5 @@ module.exports = (req, res, next) => {
         var retUrl = req.originalUrl;
         return res.redirect(`/account/login?retUrl=${retUrl}`);
     }
-
-
     next();
 }

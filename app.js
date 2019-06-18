@@ -60,8 +60,6 @@ app.use(require('./middlewares/auth.mdw'));
 app.use('/account', require('./routes/account'));
 app.use('/categories', require('./routes/categories'));
 app.use('/products', require('./routes/products'));
-app.use('/writer', require('./routes/writer'));
-app.use('/editor', require('./routes/editor'));
 
 // render toi trang home
 app.get('/', (req, res) => {
@@ -105,7 +103,7 @@ app.use((err, req, res, next) => {
 
 
 
-var port = 3000;
+var port = 4000;
 app.listen(port, () => {
     console.log(`server is running at port http://localhost:${port}`);
 });

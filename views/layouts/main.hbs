@@ -7,13 +7,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Báo Điện Tử TH16-News</title>
-  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/public/images/favicon.png">
   <link rel="stylesheet" href="/public/style.css">
-  {{!-- <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:400,400i" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> --}}
-  {{!-- <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet"> --}}
   <link href='https:/fonts.googleapis.com/css?family=Nunito+Sans:400,500,700|Quicksand:500,700' rel='stylesheet'
     type='text/css'>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '{your-app-id}',
+        cookie: true,
+        xfbml: true,
+        version: '{api-version}'
+      });
+
+      FB.AppEvents.logPageView();
+
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 
   {{{_sections.css}}}
 </head>
@@ -36,21 +54,41 @@
               <div class="classynav">
                 <ul>
                   <li><a href="/">Trang chủ</a></li>
-                  {{!-- {{#each lcCategories}} --}}
-                  <li><a href="#">Danh mục</a>
+                  <li><a href="#">Bóng đá</a>
                     <ul class="dropdown">
-                      {{#each lcCategoriesChild}}
-                      <li><a href="/Categories/{{ID}}/products">{{TenLoaiCon}}</a></li>
-                      {{/each}}
+                      <li><a href="/Categories/1/products">Bóng đá việt nam</a></li>
+                      <li><a href="/Categories/2/products">Ngoại hạng anh</a></li>
                     </ul>
                   </li>
-                  {{!-- {{/each}} --}}
-
-
-                  {{!-- <li><a href="about-us.html" data-toggle="tooltip" data-placement="bottom" title="Thông tin">About</a>
+                  <li><a href="#">Ẩm thực</a>
+                    <ul class="dropdown">
+                      <li><a href="/Categories/3/products">Ẩm thực việt nam</a></li>
+                      <li><a href="/Categories/4/products">Ẩm thực thế giới</a></li>
+                    </ul>
                   </li>
-                  <li><a href="contact.html" data-toggle="tooltip" data-placement="bottom" title="Liên hệ">Contact</a>
-                  </li> --}}
+                  <li><a href="#">Pháp luật</a>
+                    <ul class="dropdown">
+                      <li><a href="/Categories/5/products">Vụ án nổi tiếng</a></li>
+                      <li><a href="/Categories/6/products">Trọng án</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Showbiz</a>
+                    <ul class="dropdown">
+                      <li><a href="/Categories/7/products">Sao Việt</a></li>
+                      <li><a href="/Categories/8/products">Các Nước Khác</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Âm nhạc</a>
+                    <ul class="dropdown">
+                      <li><a href="/Categories/9/products">Việt Nam</a></li>
+                      <li><a href="/Categories/10/products">US-UK</a></li>
+                      <li><a href="/Categories/11/products">KPOP</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Thông tin">About</a>
+                  </li>
+                  <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Liên hệ">Contact</a>
+                  </li>
                 </ul>
 
                 <!-- Search Form -->
@@ -70,18 +108,14 @@
                 {{#if_eq authUser.PhanQuyen 1}}
                 <div class="classynav">
                   <ul>
-                    <li><a href="#">Chào, <strong>ADMINISTRATOR</a>
+                    <li><a href="#">Chào, <strong>{{authUser.HoTen}}</a>
                       <ul class="dropdown">
-                        <li><a href="/categories">quản lý danh mục</a></li>
-                        <li><a href="/account">quản lý người dùng</a></li>
+                        <li><a href="/categories">Quản lý danh mục</a></li>
+                        <li><a href="/account">Quản lý người dùng</a></li>
+                        <li><a href="/products/uppost">Thêm Bài Viết</a></li>
+                        <li><a href="/products/postmanage">Xem Tất Cả Bài Viết</a></li>
                         <div class="dropdown-divider"></div>
                         <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
-                        {{!-- {{#if writer}} --}}                       
-                        {{!-- <li><a href="/writer/loadpost">Bài Đã Viết</a></li>
-                      {{/if}}
-                      {{#if editor}}
-                        <li><a href="/editor/browsepost">Đang chờ duyệt</a></li>
-                        {{/if}} --}}
                         <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
                         <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
                       </ul>
@@ -94,13 +128,6 @@
                       <li><a href="#">Chào, <strong>{{authUser.HoTen}}</a>
                         <ul class="dropdown">
                           <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
-                          {{!-- {{#if writer}} --}}
-                          {{!-- <li><a href="/products/uppost">Thêm Bài Viết</a></li> --}}
-                          {{!-- <li><a href="/writer/loadpost">Bài Đã Viết</a></li>
-                      {{/if}}
-                      {{#if editor}}
-                        <li><a href="/editor/browsepost">Đang chờ duyệt</a></li>
-                        {{/if}} --}}
                           <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
                           <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
                         </ul>
@@ -110,18 +137,12 @@
                     {{#if_eq authUser.PhanQuyen 2}}
                     <div class="classynav">
                       <ul>
-                        <li><a href="#">Chào, <strong>WRITER</a>
+                        <li><a href="#">Chào, <strong>{{authUser.HoTen}}</a>
                           <ul class="dropdown">
                             <li><a href="/products/uppost">Thêm Bài Viết</a></li>
+                            <li><a href="/products/postmanage">Xem Tất Cả Bài Viết</a></li>
                             <div class="dropdown-divider"></div>
                             <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
-                            {{!-- {{#if writer}} --}}
-                            
-                            {{!-- <li><a href="/writer/loadpost">Bài Đã Viết</a></li>
-                      {{/if}}
-                      {{#if editor}}
-                        <li><a href="/editor/browsepost">Đang chờ duyệt</a></li>
-                        {{/if}} --}}
                             <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
                             <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
                           </ul>
@@ -136,7 +157,6 @@
                         <a href="/account/register" data-toggle="tooltip" data-placement="bottom"
                           title="Đăng ký">Register</a>
                       </div>
-
                       {{/if}}
                     </div>
                     <!-- Nav End -->
@@ -158,6 +178,16 @@
   <script src="/public/js/bootstrap/bootstrap.min.js"></script>
   <script src="/public/js/plugins/plugins.js"></script>
   <script src="/public/js/active.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+  <script src="https://www.google.com/recaptcha/api/siteverify"></script>
+  <script>
+    grecaptcha.ready(function () {
+      grecaptcha.execute('6LfUSakUAAAAAP-DKEypC7-r7CEqFqvvlOMAHv11', { action: 'homepage' }).then(function (token) {
+         ...
+      });
+  });
+  </script>
   {{{_sections.js}}}
 </body>
 

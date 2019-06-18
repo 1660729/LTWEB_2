@@ -53,28 +53,100 @@
         });
     })
 </script>
+<script>
+    $(function () {
+
+        $('#insertPostFrom').validate({
+            rules: {
+                TieuDe: {
+                    required: true
+                },
+                ChuyenMucChaID: {
+                    valueNotEquals: "default"
+                },
+                ChuyenMucConID: {
+                    valueNotEquals: "default"
+                },
+                file: {
+                    required: true
+                },
+                Nhan: {
+                    required: true
+                },
+                {{!-- NgayDang: {
+                    required: true
+                }, --}}
+                NDTomTat: {
+                    required: true
+                }
+            },
+            messages: {
+                TieuDe: {
+                    required: 'Bạn vui lòng nhập tiêu đề bài viết.'
+                },
+                file: {
+                    required: 'Bạn vui lòng upload hình ảnh.'
+                },
+                Nhan: {
+                    required: 'Bạn vui lòng nhập tag.'
+                },
+                {{!-- NgayDang: {
+                    required: 'Bạn vui lòng nhập ngày đăng.'
+                }, --}}
+                ChuyenMucChaID: {
+                    valueNotEquals: "Vui lòng chọn chuyên mục cha."
+                },
+                ChuyenMucConID: {
+                    valueNotEquals: "Vui lòng chọn chuyên mục con."
+                },
+                NDTomTat:{
+                    required: 'Bạn vui lòng nhập nội dung tóm tắt.'
+                }
+            },
+            errorElement: 'small',
+            errorClass: 'help-block text-danger',
+            validClass: 'is-valid',
+            highlight: function (e) {
+                $(e).removeClass('is-valid').addClass('is-invalid');
+            },
+            unhighlight: function (e) {
+                $(e).removeClass('is-invalid').addClass('is-valid');
+            },
+        });
+
+    })
+</script>
 {{/section}}
+
 <div class="container">
+    {{#if success}}
+    <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{success}}
+    </div>
+    {{/if}}
     <h2 class="mt-5">Đăng bài viết mới</h2>
     <div class="shadow p-3 mb-5 bg-white rounded mt-5">
         <form action="/products/uppost" method="POST" enctype="multipart/form-data">
             <div class="btn btn-primary btn-sm float-left">
                 <span>Chọn ảnh tiêu đề</span>
-                <input type="file" name="file">
+                <input required type="file" name="file">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Tiêu đề</span>
                 </div>
-                <input type="text" class="form-control" placeholder="" aria-label="Username"
+                <input required type="text" class="form-control" placeholder="" aria-label="Username"
                     aria-describedby="basic-addon1" id="TieuDe" name="TieuDe">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Chuyên mục</label>
                 </div>
-                <select class="custom-select" id="ChuyenMucChaID" name="ChuyenMucChaID">
-                    <option selected>Choose...</option>
+                <select required class="custom-select" id="ChuyenMucChaID" name="ChuyenMucChaID">
+                    <option value = "default">Choose...</option>
                     <option value="1">Bóng Đá</option>
                     <option value="2">Ẩm thực</option>
                     <option value="3">Pháp Luật</option>
@@ -86,8 +158,8 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Chuyên mục con</label>
                 </div>
-                <select class="custom-select" id="ChuyenMucConID" name="ChuyenMucConID">
-                    <option selected>Choose...</option>
+                <select required class="custom-select" id="ChuyenMucConID" name="ChuyenMucConID">
+                    <option value = "default">Choose...</option>
                     <option value="1">Bóng đá Việt Nam</option>
                     <option value="2">Ngoại Hạng Anh</option>
                     <option value="3">Ẩm thực VN</option>
@@ -105,20 +177,26 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Tag</span>
                 </div>
-                <input type="text" class="form-control" placeholder="" aria-label="Username"
+                <input required type="text" class="form-control" placeholder="" aria-label="Username"
                     aria-describedby="basic-addon1" id="Nhan" name="Nhan">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Youtube</span>
+                </div>
+                <input required type="text" class="form-control" id="Youtube" name="Youtube">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Ngày đăng</span>
                 </div>
-                <input type="date" class="form-control" id="NgayDang" name="NgayDang">
+                <input required type="date" class="form-control" id="NgayDang" name="NgayDang">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Nội dung tóm tắt</span>
                 </div>
-                <input type="text" class="form-control" placeholder="" aria-label="Username"
+                <input required type="text" class="form-control" placeholder="" aria-label="Username"
                     aria-describedby="basic-addon1" id="NDTomTat" name="NDTomTat">
             </div>
             <textarea name="NoiDung" id="editor">
