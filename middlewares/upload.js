@@ -35,4 +35,31 @@ module.exports = function (app) {
             });
         })
     })
+
+    app.post('/products/editpost/:id', writerRestricted, (req, res, next) => {
+        multer({ storage }).single('file')(req, res, err => {
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            }
+            console.log('meomeo');
+            var id = req.params.id;
+            var entity = req.body;
+            if(req.file){
+                entity.AnhDaiDien = '/public/images/' + req.file.filename;
+            }else if(!req.file){
+                delete entity.AnhDaiDien;
+            }
+
+            console.log(entity);
+
+
+            postModel.update(id,entity, (err, post) => {
+                if (err) return res.json({ error: err.message });
+            }).then(n =>{
+                res.redirect('/products/postmanage');
+            })
+        })
+    })
 }

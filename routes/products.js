@@ -70,6 +70,7 @@ router.get('/editpost/:id',writerRestricted,(req, res) => {
     });
 })
 
+
 router.post('/update', writerRestricted,(req, res) => {
     postModel.update(req.body).then(n => {
         res.redirect('/products');

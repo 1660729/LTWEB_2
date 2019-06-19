@@ -45,7 +45,7 @@
     {{else}}
     <h2 class="mt-5">CHỈNH SỬA BÀI VIẾT</h2>
     <div class="shadow p-3 mb-5 bg-white rounded mt-5">
-        <form action="/products/update" method="POST" enctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">ID bài viết</span>
@@ -54,10 +54,13 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Ảnh đại diện</span>
+                    <span class="input-group-text" id="basic-addon1">Ảnh đại diện cũ</span>
                 </div>
-                <input type="text" class="form-control" id="AnhDaiDien" value="{{this.baiviet.AnhDaiDien}}"
-                    name="AnhDaiDien">
+                <input type="text" class="form-control" id="AnhDaiDien" value="{{this.baiviet.AnhDaiDien}}" name="AnhDaiDien">
+            </div>
+            <div class="btn btn-primary btn-sm float-left">
+                <span>Chọn ảnh tiêu đề</span>
+                <input required type="file" name="file"">
             </div>
 
             <div class="input-group mb-3">
@@ -96,10 +99,8 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Ngày đăng</span>
+                    <span class="input-group-text" id="basic-addon1">Ngày đăng cũ {{this.baiviet.NgayDang}}</span>
                 </div>
-                <input required type="text" class="form-control" id="NgayDang" value="{{this.baiviet.NgayDang}}"
-                    name="NgayDang">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -113,7 +114,7 @@
                     <span class="input-group-text" id="basic-addon1">Nội dung</span>
                 </div>
                 <input required type="text" class="form-control" id="txtFullDes" value="{{this.baiviet.NoiDung}}"
-                    name="FullDes">
+                    name="NoiDung">
             </div>
             {{/if}}
             <div class="card-footer text-right">

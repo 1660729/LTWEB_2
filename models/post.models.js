@@ -9,9 +9,9 @@ module.exports = {
     add : entity => {
         return db.add('baiviet', entity);
     },
-    update: entity => {
-        var id = entity.ProID;
-        delete entity.ProID;
+    update: (id, entity) => {
+        //Thu tu: bang can sua, DK sua la id, entity: nhung cot trong mysql can sua, id la 
+        //gia tri id nguoi dung nhap vao
         return db.update('baiviet', 'ProID', entity, id);
     },
 
