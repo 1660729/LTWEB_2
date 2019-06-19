@@ -34,7 +34,7 @@ Version: - v1.0.0
 :: 17.0 Typography CSS
 */
 /* :: 1.0 Import Fonts */
-@import url("https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700|Work+Sans:300,400,500,600,700");
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
 /* :: 2.0 Import All CSS */
 @import url(css/bootstrap.min.css);
 @import url(css/classy-nav.css);
@@ -889,7 +889,7 @@ img {
     .breadcrumb-area .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
       color: #191919;
       content: "\f105";
-      font-family: 'FontAwesome'; }
+      font-family: Quicksand,'Nunito Sans','Helvetica Neue',Helvetica,Roboto,Oxygen,Ubuntu,Cantarell,'Fira Sans','Droid Sans',sans-serif; }
 
 /* :: 11.0 Blog Area CSS */
 .single-blog-post {

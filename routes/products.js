@@ -1,8 +1,6 @@
 var express = require('express');
 var productModel = require('../models/product.model');
 var postModel = require('../models/post.models');
-var writerRestricted = require('../middlewares/writerRestricted');
-var adminRestricted = require('../middlewares/adminRestricted');
 
 var router = express.Router();
 
@@ -10,7 +8,7 @@ router.get('/add', (req, res, next) => {
     res.render('vwProducts/add');
   })
 
-router.get('/postmanage', adminRestricted, (req, res) => {
+router.get('/postmanage', (req, res) => {
     postModel.all()
         .then(rows => {
             rows.forEach(element => {
@@ -29,11 +27,30 @@ router.get('/postmanage', adminRestricted, (req, res) => {
         });
 })
 
-router.get('/uppost',adminRestricted, writerRestricted, (req, res, next) => {
+router.get('/uppost', (req, res, next) => {
     res.render('vwProducts/uppost');
   })
 
-  router.get('/editpost/:id', adminRestricted, writerRestricted, (req, res) => {
+// router.post('/uppost', (req, res) => {
+//     var entity = {
+//                  AnhDaiDien: req.body.AnhDaiDien,
+//                  TieuDe: req.body.TieuDe,
+//                  ChuyenMucChaID: req.body.ChuyenMucChaID,
+//                  ChuyenMucConID: req.body.ChuyenMucConID,
+//                  Youtube: req.body.Youtube,
+//                  Nhan: req.body.Nhan,
+//                  NgayDang: req.body.NgayDang,
+//                  NoiDung: req.body.NoiDung,
+//                  NDTomTat: req.body.NDTomTat,
+//                  TinhTrang: req.body.TinhTrang,
+//                  LuotXem: req.body.LuotXem};
+//         postModel.add(entity).then(id => {
+//         console.log(id);
+//         res.render('vwProducts/uppost');
+//     }); 
+// })
+
+router.get('/editpost/:id',(req, res) => {
     var id = req.params.id;
     if(isNaN(id)){
         res.render('vwProducts/editpost',{
@@ -56,17 +73,16 @@ router.get('/uppost',adminRestricted, writerRestricted, (req, res, next) => {
     });
 })
 
-router.post('/editpost/update', adminRestricted, writerRestricted, (req, res, next) => {
-    categoryModel.update(req.body).then(n => {
+router.post('/update', (req, res) => {
+    postModel.update(req.body).then(n => {
         res.redirect('/products');
-    }).catch(next);
-
+    });   
 })
 
-router.post('/editpost/delete', adminRestricted, writerRestricted, (req, res, next) => {
-    categoryModel.delete(+req.body.ID).then(n => {
+router.post('/delete', (req, res) => {
+    postModel.delete(+req.body.ProID).then(n => {
         res.redirect('/products');
-    }).catch(next);
+    });   
 })
   
 router.get('/:id', (req, res, next) => {

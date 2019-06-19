@@ -77,45 +77,45 @@
                 Nhan: {
                     required: true
                 },
-                NgayDang: {
-                    required: true
-                },
-                NDTomTat: {
-                    required: true
-                }
+                {{!-- NgayDang: {
+                required: true
+            }, --}}
+        NDTomTat: {
+            required: true
+        }
             },
-            messages: {
-                TieuDe: {
-                    required: 'Bạn vui lòng nhập tiêu đề bài viết.'
-                },
-                file: {
-                    required: 'Bạn vui lòng upload hình ảnh.'
-                },
-                Nhan: {
-                    required: 'Bạn vui lòng nhập tag.'
-                },
-                NgayDang: {
-                    required: 'Bạn vui lòng nhập ngày đăng.'
-                },
-                ChuyenMucChaID: {
-                    valueNotEquals: "Vui lòng chọn chuyên mục cha."
-                },
-                ChuyenMucConID: {
-                    valueNotEquals: "Vui lòng chọn chuyên mục con."
-                },
-                NDTomTat: {
-                    required: 'Bạn vui lòng nhập nội dung tóm tắt.'
-                }
+        messages: {
+            TieuDe: {
+                required: 'Bạn vui lòng nhập tiêu đề bài viết.'
             },
-            errorElement: 'small',
-            errorClass: 'help-block text-danger',
-            validClass: 'is-valid',
-            highlight: function (e) {
-                $(e).removeClass('is-valid').addClass('is-invalid');
+            file: {
+                required: 'Bạn vui lòng upload hình ảnh.'
             },
-            unhighlight: function (e) {
-                $(e).removeClass('is-invalid').addClass('is-valid');
+            Nhan: {
+                required: 'Bạn vui lòng nhập tag.'
             },
+                {{!-- NgayDang: {
+            required: 'Bạn vui lòng nhập ngày đăng.'
+        }, --}}
+        ChuyenMucChaID: {
+            valueNotEquals: "Vui lòng chọn chuyên mục cha."
+        },
+        ChuyenMucConID: {
+            valueNotEquals: "Vui lòng chọn chuyên mục con."
+        },
+        NDTomTat: {
+            required: 'Bạn vui lòng nhập nội dung tóm tắt.'
+        }
+            },
+        errorElement: 'small',
+        errorClass: 'help-block text-danger',
+        validClass: 'is-valid',
+        highlight: function (e) {
+            $(e).removeClass('is-valid').addClass('is-invalid');
+        },
+        unhighlight: function (e) {
+            $(e).removeClass('is-invalid').addClass('is-valid');
+        },
         });
 
     })
@@ -187,7 +187,6 @@
             <div class="form-group">
                 <label>Ngày đăng</label>
                 <input required id="datepicker" name="NgayDang">
-
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -199,7 +198,7 @@
             <textarea name="NoiDung" id="editor">
     </textarea>
             <div class="text-right">
-                <button type="submit" class="btn btn-success mt-5">Thêm bài viết</button>
+                <button type="submit" class="btn btn-outline-success mt-5">Thêm bài viết</button>
             </div>
         </form>
     </div>

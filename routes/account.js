@@ -5,7 +5,6 @@ var passport = require('passport');
 var nodemailer = require('nodemailer');
 var userModel = require('../models/user.model');
 var restricted = require('../middlewares/restricted');
-var adminRestricted = require('../middlewares/writerRestricted');
 // var profileModel = require('../models/profile.model');
 
 var router = express.Router();
@@ -294,7 +293,7 @@ router.post('/forgotpassword', (req, res, next) => {
     })
 });
 
-router.get('/', adminRestricted, (req, res) => {
+router.get('/', restricted, (req, res) => {
     userModel.all()
         .then(rows => {
             res.render('vwAccount/index', {
@@ -306,7 +305,7 @@ router.get('/', adminRestricted, (req, res) => {
         });
 })
 
-router.get('/edit/:id', adminRestricted, (req, res, next) => {
+router.get('/edit/:id', (req, res, next) => {
     var id = req.params.id;
     if (isNaN(id)) {
         res.render('vwCategories/edit', { error: true });
@@ -329,14 +328,14 @@ router.get('/edit/:id', adminRestricted, (req, res, next) => {
         }).catch(next);
 })
 
-router.post('/update', adminRestricted, (req, res, next) => {
+router.post('/update', restricted, (req, res, next) => {
     userModel.updateUser(req.body).then(n => {
         res.redirect('/account');
     }).catch(next);
 
 })
 
-router.post('/delete', adminRestricted, (req, res, next) => {
+router.post('/delete', restricted, (req, res, next) => {
     userModel.delete(+req.body.ID).then(n => {
         res.redirect('/account');
     }).catch(next);
