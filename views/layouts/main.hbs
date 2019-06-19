@@ -56,33 +56,58 @@
                   <li><a href="/">Trang chủ</a></li>
                   <li><a href="#">Bóng đá</a>
                     <ul class="dropdown">
-                      <li><a href="/Categories/1/products">Bóng đá việt nam</a></li>
-                      <li><a href="/Categories/2/products">Ngoại hạng anh</a></li>
+                      {{!-- <li><a href="/Categories/1/products">Bóng đá việt nam</a></li>
+                      <li><a href="/Categories/2/products">Ngoại hạng anh</a></li> --}}
+                      {{#each lcCategoriesChild}}
+                      {{#if_eq IDCha 1}}
+                      <li><a href="/Categories/{{ID}}/products">{{TenLoaiCon}}</a></li>
+                      {{/if_eq}}
+                      {{/each}}
                     </ul>
                   </li>
                   <li><a href="#">Ẩm thực</a>
                     <ul class="dropdown">
-                      <li><a href="/Categories/3/products">Ẩm thực việt nam</a></li>
-                      <li><a href="/Categories/4/products">Ẩm thực thế giới</a></li>
+                      {{!-- <li><a href="/Categories/3/products">Ẩm thực việt nam</a></li>
+                      <li><a href="/Categories/4/products">Ẩm thực thế giới</a></li> --}}
+                      {{#each lcCategoriesChild}}
+                      {{#if_eq IDCha 2}}
+                      <li><a href="/Categories/{{ID}}/products">{{TenLoaiCon}}</a></li>
+                      {{/if_eq}}
+                      {{/each}}
                     </ul>
                   </li>
                   <li><a href="#">Pháp luật</a>
                     <ul class="dropdown">
-                      <li><a href="/Categories/5/products">Vụ án nổi tiếng</a></li>
-                      <li><a href="/Categories/6/products">Trọng án</a></li>
+                      {{!-- <li><a href="/Categories/5/products">Vụ án nổi tiếng</a></li>
+                      <li><a href="/Categories/6/products">Trọng án</a></li> --}}
+                      {{#each lcCategoriesChild}}
+                      {{#if_eq IDCha 3}}
+                      <li><a href="/Categories/{{ID}}/products">{{TenLoaiCon}}</a></li>
+                      {{/if_eq}}
+                      {{/each}}
                     </ul>
                   </li>
                   <li><a href="#">Showbiz</a>
                     <ul class="dropdown">
-                      <li><a href="/Categories/7/products">Sao Việt</a></li>
-                      <li><a href="/Categories/8/products">Các Nước Khác</a></li>
+                      {{!-- <li><a href="/Categories/7/products">Sao Việt</a></li>
+                      <li><a href="/Categories/8/products">Các Nước Khác</a></li> --}}
+                      {{#each lcCategoriesChild}}
+                      {{#if_eq IDCha 4}}
+                      <li><a href="/Categories/{{ID}}/products">{{TenLoaiCon}}</a></li>
+                      {{/if_eq}}
+                      {{/each}}
                     </ul>
                   </li>
                   <li><a href="#">Âm nhạc</a>
                     <ul class="dropdown">
-                      <li><a href="/Categories/9/products">Việt Nam</a></li>
+                      {{!-- <li><a href="/Categories/9/products">Việt Nam</a></li>
                       <li><a href="/Categories/10/products">US-UK</a></li>
-                      <li><a href="/Categories/11/products">KPOP</a></li>
+                      <li><a href="/Categories/11/products">KPOP</a></li> --}}
+                      {{#each lcCategoriesChild}}
+                      {{#if_eq IDCha 5}}
+                      <li><a href="/Categories/{{ID}}/products">{{TenLoaiCon}}</a></li>
+                      {{/if_eq}}
+                      {{/each}}
                     </ul>
                   </li>
                   {{!-- <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Thông tin">About</a>
