@@ -42,7 +42,7 @@
       <div class="classy-nav-container breakpoint-off">
         <div class="container-fluid">
           <nav class="classy-navbar justify-content-between" id="nikkiNav">
-            <a href="/" class="nav-brand"><img src="/public/img/core-img/logo.png" alt=""></a>
+            <a href="/" class="nav-brand"><img src="/public/img/core-img/logo.jpg" alt=""></a>
             <div class="classy-navbar-toggler">
               <span class="navbarToggler"></span>
             </div>
@@ -170,30 +170,30 @@
                       </ul>
                       {{/if_eq}}
                       {{#if_eq authUser.PhanQuyen 3}}
-                    <div class="classynav">
-                      <ul>
-                        <li><a href="#">Chào, <strong>{{authUser.HoTen}}</a>
-                          <ul class="dropdown">
-                            <li><a href="/editor">Trang quản lý</a></li>
-                            <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
-                            <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
-                            <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                      {{/if_eq}}
-                      {{else}}
-                      <div class="top-social-info">
-                        <a href="/account/login" data-toggle="tooltip" data-placement="bottom"
-                          title="Đăng nhập">Login</a>
-                        <li class="list-inline-item">/</li>
-                        <a href="/account/register" data-toggle="tooltip" data-placement="bottom"
-                          title="Đăng ký">Register</a>
+                      <div class="classynav">
+                        <ul>
+                          <li><a href="#">Chào, <strong>{{authUser.HoTen}}</a>
+                            <ul class="dropdown">
+                              <li><a href="/editor">Trang quản lý</a></li>
+                              <li><a href="/account/profile/{{authUser.ID}}">Thông tin cá nhân</a></li>
+                              <li><a href="/account/editpassword/{{authUser.ID}}">Đổi mật khẩu</a></li>
+                              <li><a href="javascript:$('#frmLogout').submit();">Đăng xuất</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                        {{/if_eq}}
+                        {{else}}
+                        <div class="top-social-info">
+                          <a href="/account/login" data-toggle="tooltip" data-placement="bottom"
+                            title="Đăng nhập">Login</a>
+                          <li class="list-inline-item">/</li>
+                          <a href="/account/register" data-toggle="tooltip" data-placement="bottom"
+                            title="Đăng ký">Register</a>
+                        </div>
+                        {{/if}}
                       </div>
-                      {{/if}}
+                      <!-- Nav End -->
                     </div>
-                    <!-- Nav End -->
-                  </div>
           </nav>
         </div>
       </div>
@@ -205,6 +205,38 @@
     {{{body}}}
   </div>
 
+  {{!-- <footer class="footer-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <!-- Footer Social Info -->
+          <div class="footer-social-info d-flex align-items-center justify-content-between">
+            <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+            <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a> 
+            <a href="#"><i class="fa fa-google-plus"></i><span>Google +</span></a>
+            <a href="#"><i class="fa fa-tumblr"></i><span>Tumblr</span></a> 
+            <a href="#"><i class="fa fa-github"></i><span>Github</span></a>
+            <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
+            <a href="#"><i class="fa fa-youtube"></i><span>Youtube</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="copywrite-text">
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script> | Design by <a href="#"
+                target="_blank">Team Con Sâu (689, 701, 729)</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer> --}}
   <!--SCRIPTS-->
   <script src="/public/js/jquery/jquery-2.2.4.min.js"></script>
   <script src="/public/js/bootstrap/popper.min.js"></script>
