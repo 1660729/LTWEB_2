@@ -6,20 +6,14 @@
                     TRANG QUẢN TRỊ VIÊN
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center"><a href="/admin/adminControl"><i class="fa fa-snowflake-o"
-                                aria-hidden="true"></i> Trang Administrator</a></li>
-                    <li class="list-group-item text-center"><a href="/products/postmanage"><i class="fa fa-file-text"
-                                aria-hidden="true"></i> Xem tất cả bài viết</a></li>
-                    <li class="list-group-item text-center"><a href="/account"><i class="fa fa-users"
-                                aria-hidden="true"></i> Quản lý người dùng</a></li>
-                    <li class="list-group-item text-center"><a href="/categories"><i class="fa fa-folder-open-o"
-                                aria-hidden="true"></i> Quản lý danh mục</a></li>
-                    <li class="list-group-item text-center"><a href="/tag"><i class="fa fa fa-tags"
-                                aria-hidden="true"></i> Quản lý tag</a></li>
-                    <li class="list-group-item text-center"><a href="/subscriber"><i class="fa fa-leaf"
-                                aria-hidden="true"></i> Gia hạn độc giả</a></li>
-                    <li class="list-group-item text-center"><a class="" href="/products/uppost"><i class="fa fa-plus"
-                                aria-hidden="true"></i> Thêm bài viết</a></li>
+                    <li class="list-group-item text-center"><a href="/editor"><i class="fa fa-file-text"
+                                aria-hidden="true"></i> Trang quản lý bài viết</a></li>
+                    <li class="list-group-item text-center"><a href="#"><i class="fa fa-check"
+                                aria-hidden="true"></i> Xem bài đã duyệt</a></li>
+                    <li class="list-group-item text-center"><a href="#"><i class="fa fa-pause"
+                                aria-hidden="true"></i> Xem bài chưa duyệt</a></li>
+                    <li class="list-group-item text-center"><a href="#"><i class="fa fa-times"
+                                aria-hidden="true"></i> Bài viết bị từ chối</a></li>
                 </ul>
             </div>
         </div>
@@ -36,7 +30,7 @@
                             <th scope="col">ProID</th>
                             <th scope="col">Tiêu đề bài viết</th>
                             <th scope="col">Tình Trạng</th>
-                            <th scope="col">Chỉnh sửa</th>
+                            <th scope="col">Xét Duyệt</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +40,7 @@
                             <td><a href="/products/{{ProID}}">{{TieuDe}}</a></td>
                             <td>{{TinhTrang}}</td>
                             <td class="text-right">
-                                <a name="" id="" class="btn btn-primary btn-xs" href="/products/editpost/{{ProID}}"
+                                <a name="" id="" class="btn btn-primary btn-xs" href="/editor/editapproved/{{ProID}}"
                                     role="button" title="Edit">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </a>

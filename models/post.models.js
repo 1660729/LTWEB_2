@@ -1,12 +1,12 @@
 var db = require('../utils/db');
 module.exports = {
-    all : ()=>{
+    all: () => {
         return db.load('select * from baiviet');
     },
-    single: id => {       
-        return db.load( `select * from baiviet where ProID = ${id}`);
+    single: id => {
+        return db.load(`select * from baiviet where ProID = ${id}`);
     },
-    add : entity => {
+    add: entity => {
         return db.add('baiviet', entity);
     },
     update: (id, entity) => {
@@ -17,6 +17,32 @@ module.exports = {
 
     delete: id => {
         return db.delete('baiviet', 'ProID', id);
+    },
+    // Lấy post mới nhất
+    findpost: () => {
+        return db.load('SELECT * from baiviet where TinhTrang = 2 order by NgayXuatBan desc limit 10');
+    },
+    // //lấy post nhiều view nhất
+    findview: () => {
+        return db.load('SELECT * from baiviet WHERE TinhTrang =2 order by LuotXem desc limit 10');
+    },
+    // //đếm số lượng views
+    countview: () => {
+        return db.updateView('UPDATE baiviet SET LuotXem = LuotXem + 1 WHERE ProID = ' + id);
+    },
+    //Lay bai viet chua dc duyet
+    getAllNotApproved: () => {
+        return db.load('select * from baiviet where TinhTrang = 1');
+    },
+
+    countGetNotApproved: () => {
+        return db.load('select count(ProID) from baiviet where TinhTrang = 1');
+    },
+    updateStatusPost: () => {
+        return db.updateDate('update baiviet set TinhTrang = 2 where DATEDIFF(NOW(), date_post) >= 0 and TinhTrang = 1');
+    },
+    approvedPost: () => {
+        return db.load('select * from baiviet where TinhTrang = 2');
     }
 };
 

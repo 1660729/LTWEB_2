@@ -9,11 +9,15 @@ router.get('/postmanage', writerRestricted, (req, res) => {
     postModel.all()
         .then(rows => {
             rows.forEach(element => {
-                if (element.TinhTrang == 1) {
-                    element.TinhTrang = 'Chưa được duyệt';
-                } else if (element.TinhTrang == 2) {
-                    element.TinhTrang = 'Đã duyệt';
-                }
+                rows.forEach(element => {
+                    if (element.TinhTrang == 1) {
+                        element.TinhTrang = 'Đang chờ duyệt';
+                    } else if (element.TinhTrang == 2) {
+                        element.TinhTrang = 'Đã duyệt';
+                    } else if (element.TinhTrang == 0) {
+                        element.TinhTrang = 'Bị từ chối';
+                    }
+                });
             });
             res.render('vwProducts/postmanage', {
                 baiviet: rows
@@ -39,6 +43,15 @@ router.get('/editpost/:id', writerRestricted, (req, res) => {
     postModel.single(id)
         .then(rows => {
             if (rows.length > 0) {
+                rows.forEach(element => {
+                    if (element.TinhTrang == 1) {
+                        element.TinhTrang = 'Đang chờ duyệt';
+                    } else if (element.TinhTrang == 2) {
+                        element.TinhTrang = 'Đã duyệt';
+                    } else if (element.TinhTrang == 0) {
+                        element.TinhTrang = 'Bị từ chối';
+                    }
+                });
                 res.render('vwProducts/editpost', {
                     error: false,
                     baiviet: rows[0]

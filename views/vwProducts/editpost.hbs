@@ -54,15 +54,10 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Ảnh đại diện cũ</span>
+                    <span class="input-group-text" id="basic-addon1">Ảnh đại diện</span>
                 </div>
                 <input type="text" class="form-control" id="AnhDaiDien" value="{{this.baiviet.AnhDaiDien}}" name="AnhDaiDien">
             </div>
-            <div class="btn btn-primary btn-sm float-left">
-                <span>Chọn ảnh tiêu đề</span>
-                <input required type="file" name="file"">
-            </div>
-
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Tiêu đề</span>
@@ -92,15 +87,20 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Tình Trạng</span>
+                    <label class="input-group-text" for="inputGroupSelect01">Tình Trạng</label>
                 </div>
-                <input required type="text" class="form-control" placeholder="" aria-label="Username"
-                    aria-describedby="basic-addon1" id="TinhTrang" value="{{this.baiviet.TinhTrang}}" name="TinhTrang">
+                <select required class="custom-select" id="TinhTrang" name="TinhTrang" value="{{this.baiviet.TinhTrang}}">
+                    <option value="default">Trạng thái : {{this.baiviet.TinhTrang}}</option>
+                    <option value="0">Bị từ chối</option>
+                    <option value="1">Đang chờ duyệt</option>
+                    <option value="2">Đã duyệt</option>
+                </select>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Ngày đăng cũ {{this.baiviet.NgayDang}}</span>
+                    <span class="input-group-text" id="basic-addon1">Ngày đăng</span>
                 </div>
+                <input required type="text" class="form-control" id="NgayDang" value="{{this.baiviet.NgayDang}}" name="NgayDang">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
