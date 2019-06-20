@@ -41,8 +41,23 @@ module.exports = {
         return db.update('chuyenmuccon', 'ID', entity, id);
     },
 
+    updateUser: entity => {
+        var id = entity.ID;
+        delete entity.ID;
+        return db.update('taikhoan', 'ID', entity, id);
+    },
+
     delete: id => {
         return db.delete('chuyenmuccon', 'ID', id)
-    }
+    },
+
+    selectPostOfEditorAndManageCategoryAndStatus: () => {
+        return db.load(`
+            select tk.*, con.*
+            from taikhoan tk, chuyenmuccon con
+            where tk.AssignedCategories = con.ID 
+        `);
+    },
+
 
 };

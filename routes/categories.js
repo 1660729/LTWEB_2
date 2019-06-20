@@ -125,6 +125,109 @@ router.get('/:id/products', (req, res, next) => {
 })
 
 
+router.get('/assigned', adminRestricted, (req, res) => {
+    categoryModel.selectPostOfEditorAndManageCategoryAndStatus()
+        .then(rows => {
+
+            rows.forEach(element => {
+                rows.forEach(element => {
+                    if (element.AssignedCategories == 1) {
+                        element.AssignedCategories = 'Bóng đá Việt Nam';
+                    } else if (element.AssignedCategories == 2) {
+                        element.AssignedCategories = 'Ngoại Hạng Anh';
+                    } else if (element.AssignedCategories == 3) {
+                        element.AssignedCategories = 'Ẩm thực Việt Nam';
+                    } else if (element.AssignedCategories == 4) {
+                        element.AssignedCategories = 'Ẩm thực Thế Giới';
+                    } else if (element.AssignedCategories == 5) {
+                        element.AssignedCategories = 'Vụ Án Nổi Tiếng';
+                    } else if (element.AssignedCategories == 6) {
+                        element.AssignedCategories = 'Trọng Án';
+                    } else if (element.AssignedCategories == 7) {
+                        element.AssignedCategories = 'Sao Việt';
+                    } else if (element.AssignedCategories == 8) {
+                        element.AssignedCategories = 'Các nước khác';
+                    } else if (element.AssignedCategories == 9) {
+                        element.AssignedCategories = 'Việt Nam';
+                    } else if (element.AssignedCategories == 10) {
+                        element.AssignedCategories = 'US-UK';
+                    } else if (element.AssignedCategories == 11) {
+                        element.AssignedCategories = 'KPOP';
+                    }
+
+
+                });
+            });
+
+            res.render('vwCategories/indexAssigned', {
+                phancongchuyenmuc: rows
+            })
+        })
+        .catch(error => {
+            res.render('error', { layout: false });
+        });
+})
+
+router.get('/assigned/edit/:id', adminRestricted, (req, res, next) => {
+    var id = req.params.id;
+    if (isNaN(id)) {
+        res.render('vwCategories/editAssigned', { error: true });
+        return;
+    }
+
+    categoryModel.single(id)
+        .then(rows => {
+            if (rows.length > 0) {
+
+                rows.forEach(element => {
+                    rows.forEach(element => {
+                        if (element.AssignedCategories == 1) {
+                            element.AssignedCategories = 'Bóng đá Việt Nam';
+                        } else if (element.AssignedCategories == 2) {
+                            element.AssignedCategories = 'Ngoại Hạng Anh';
+                        } else if (element.AssignedCategories == 3) {
+                            element.AssignedCategories = 'Ẩm thực Việt Nam';
+                        } else if (element.AssignedCategories == 4) {
+                            element.AssignedCategories = 'Ẩm thực Thế Giới';
+                        } else if (element.AssignedCategories == 5) {
+                            element.AssignedCategories = 'Vụ Án Nổi Tiếng';
+                        } else if (element.AssignedCategories == 6) {
+                            element.AssignedCategories = 'Trọng Án';
+                        } else if (element.AssignedCategories == 7) {
+                            element.AssignedCategories = 'Sao Việt';
+                        } else if (element.AssignedCategories == 8) {
+                            element.AssignedCategories = 'Các nước khác';
+                        } else if (element.AssignedCategories == 9) {
+                            element.AssignedCategories = 'Việt Nam';
+                        } else if (element.AssignedCategories == 10) {
+                            element.AssignedCategories = 'US-UK';
+                        } else if (element.AssignedCategories == 11) {
+                            element.AssignedCategories = 'KPOP';
+                        }
+                    });
+                });
+
+                var phancongchuyenmuc = rows[0];
+                res.render('vwCategories/editAssigned', {
+                    error: false,
+                    phancongchuyenmuc
+                });
+            } else {
+                res.render('vwCategories/editAssigned', {
+                    error: true
+                });
+            }
+        }).catch(next);
+})
+
+router.post('/assigned/update', adminRestricted, (req, res, next) => {
+    categoryModel.updateUser(req.body).then(n => {
+        res.redirect('/categories/assigned');
+    }).catch(next);
+
+})
+
+
 // router.get('/', (req, res, next) => {
 //     var id = req.params.id;
 //     // if (isNaN(id)) {
