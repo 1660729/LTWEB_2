@@ -124,6 +124,49 @@ router.get('/:id/products', (req, res, next) => {
 
 })
 
+router.get('/assigned', (req, res) => {
+    categoryModel.selectPostOfEditorAndManageCategoryAndStatus()
+        .then(rows => {
+
+            res.render('vwCategories/indexAssigned', {
+                phancongchuyenmuc: rows
+            })
+        })
+        .catch(error => {
+            res.render('error', { layout: false });
+        });
+})
+
+router.get('/assigned/edit/:id', (req, res, next) => {
+    var id = req.params.id;
+    if (isNaN(id)) {
+        res.render('vwCategories/editAsigned', { error: true });
+        return;
+    }
+
+    categoryModel.single(id)
+        .then(rows => {
+            if (rows.length > 0) {
+                var phancongchuyenmuc = rows[0];
+                res.render('vwCategories/editAsigned', {
+                    error: false,
+                    phancongchuyenmuc
+                });
+            } else {
+                res.render('vwCategories/editAsigned', {
+                    error: true
+                });
+            }
+        }).catch(next);
+})
+
+router.post('/assigned/update', (req, res, next) => {
+    categoryModel.update(req.body).then(n => {
+        res.redirect('/categories/assigned');
+    }).catch(next);
+
+})
+
 
 // router.get('/', (req, res, next) => {
 //     var id = req.params.id;
