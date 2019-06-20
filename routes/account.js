@@ -119,13 +119,13 @@ router.get('/profile/:id', restricted, (req, res, next) => {
 
     userModel.single(id)
         .then(rows => {
-            if(rows[0].PhanQuyen == 1){
+            if (rows[0].PhanQuyen == 1) {
                 rows[0].PhanQuyen = "Admin";
-            }else if(rows[0].PhanQuyen == 0){
+            } else if (rows[0].PhanQuyen == 0) {
                 rows[0].PhanQuyen = "Độc giả";
-            }else if(rows[0].PhanQuyen == 2){
+            } else if (rows[0].PhanQuyen == 2) {
                 rows[0].PhanQuyen = "Người kiểm duyệt";
-            }else if(rows[0].PhanQuyen == 3){
+            } else if (rows[0].PhanQuyen == 3) {
                 rows[0].PhanQuyen = "Tác giả";
             }
             if (rows.length > 0) {
@@ -250,7 +250,7 @@ router.post('/forgotpassword', (req, res, next) => {
         if (rows.length > 0) {
             var user = rows[0];
             var nodemailer = require('nodemailer');
-            var transporter = nodemailer.createTransport('smtps://nguyenquocbao248824%40gmail.com:ilovenodejS2@smtp.gmail.com');
+            var transporter = nodemailer.createTransport('smtps://lengocvinh.729%40gmail.com:SinceOrFor729@smtp.gmail.com');
             var mailOptions = {
                 from: '"baodientu" <foo@blurdybloop.com>', // sender address
                 to: entity.Email, // list of receivers

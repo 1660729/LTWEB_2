@@ -123,64 +123,71 @@
 {{/section}}
 
 <div class="container">
-    {{#if this.error}}
-    <div class="alert alert-danger" role="alert">
-        ID không hợp lệ! <a href="/editor" class="alert-link"> Quay lại List!</a>
+    {{#if success}}
+    <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{success}}
     </div>
-    {{else}}
-    <h2 class="mt-5">CHỈNH SỬA BÀI VIẾT</h2>
+    {{/if}}
+    <h2 class="mt-5">Đăng bài viết mới</h2>
     <div class="shadow p-3 mb-5 bg-white rounded mt-5">
         <form action="" method="POST" enctype="multipart/form-data">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">ID bài viết</span>
-                </div>
-                <input readonly type="text" class="form-control" id="ProID" value="{{this.baiviet.ProID}}" name="ProID">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Ảnh đại diện</span>
-                </div>
-                <input readonly type="text" class="form-control" id="AnhDaiDien" value="{{this.baiviet.AnhDaiDien}}"
-                    name="AnhDaiDien">
+            <div class="btn btn-primary btn-sm float-left">
+                <span>Chọn ảnh tiêu đề</span>
+                <input required type="file" name="file">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Tiêu đề</span>
                 </div>
-                <input readonly type="text" class="form-control" id="TieuDe" value="{{this.baiviet.TieuDe}}"
-                    name="TieuDe">
+                <input required type="text" class="form-control" placeholder="" aria-label="Username"
+                    aria-describedby="basic-addon1" id="TieuDe" name="TieuDe">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Chuyên mục</span>
+                    <label class="input-group-text" for="inputGroupSelect01">Chuyên mục</label>
                 </div>
-                <input readonly type="text" class="form-control" id="ChuyenMucChaID"
-                    value="{{this.baiviet.ChuyenMucChaID}}" name="ChuyenMucChaID">
+                <select required class="custom-select" id="ChuyenMucChaID" name="ChuyenMucChaID">
+                    <option value="default">Choose...</option>
+                    <option value="1">Bóng Đá</option>
+                    <option value="2">Ẩm thực</option>
+                    <option value="3">Pháp Luật</option>
+                    <option value="4">Showbiz</option>
+                    <option value="5">Âm nhạc</option>
+                </select>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Chuyên mục con</span>
+                    <label class="input-group-text" for="inputGroupSelect01">Chuyên mục con</label>
                 </div>
-                <input readonly type="text" class="form-control" id="ChuyenMucConID"
-                    value="{{this.baiviet.ChuyenMucConID}}" name="ChuyenMucConID">
+                <select required class="custom-select" id="ChuyenMucConID" name="ChuyenMucConID">
+                    <option value="default">Choose...</option>
+                    <option value="1">Bóng đá Việt Nam</option>
+                    <option value="2">Ngoại Hạng Anh</option>
+                    <option value="3">Ẩm thực VN</option>
+                    <option value="4">Ẩm thực Thế giới</option>
+                    <option value="5">Vụ Án Nổi Tiếng</option>
+                    <option value="6">Trọng Án</option>
+                    <option value="7">Sao Việt</option>
+                    <option value="8">Sao Hollywood Và Các Nước Khác</option>
+                    <option value="9">Việt Nam</option>
+                    <option value="10">US-UK</option>
+                    <option value="11">KPOP</option>
+                </select>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Tag</span>
+                    <label class="input-group-text" for="inputGroupSelect01">Tag</label>
                 </div>
-                <input readonly type="text" class="form-control" placeholder="" aria-label="Username"
-                    aria-describedby="basic-addon1" id="Nhan" value="{{this.baiviet.Nhan}}" name="Nhan">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Tình Trạng</label>
-                </div>
-                <select required class="custom-select" id="TinhTrang" name="TinhTrang" value="{{this.baiviet.TinhTrang}}">
-                    <option value="default">Trạng thái : {{this.baiviet.TinhTrang}}</option>
-                    <option value="0">Bị từ chối</option>
-                    <option value="1">Đang chờ duyệt</option>
-                    <option value="2">Đã duyệt</option>
+                <select required class="custom-select" id="Nhan" name="Nhan">
+                    <option value="default">Choose...</option>
+                    <option value="1">Bóng Đá</option>
+                    <option value="2">Ẩm thực</option>
+                    <option value="3">Pháp Luật</option>
+                    <option value="4">Showbiz</option>
+                    <option value="5">Âm nhạc</option>
                 </select>
             </div>
             <div class="form-group">
@@ -191,32 +198,17 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Nội dung tóm tắt</span>
                 </div>
-                <input readonly type="text" class="form-control" id="NDTomTat" value="{{this.baiviet.NDTomTat}}"
-                    name="NDTomTat">
+                <input required type="text" class="form-control" placeholder="" aria-label="Username"
+                    aria-describedby="basic-addon1" id="NDTomTat" name="NDTomTat">
             </div>
-            <textarea readonly name="NoiDung" id="editor" rows="5" value=""></textarea>
-            <input name="" id="NoiDungText" class="btn btn-primary" type="text" value="{{this.baiviet.NoiDung}}">
-            {{/if}}
-            <div class="card-footer text-right">
-                <a class="btn btn-info" href="/editor" role="button" title="Back">
-                    <i class="fa fa-backward" aria-hidden="true"></i>
-                    Bài viết
-                </a>
-                {{#unless this.error}}
-                <button type="submit" class="btn btn-danger" formaction="/editor/delete">
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    Xóa
-                </button>
-                <button type="submit" class="btn btn-success">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                    Lưu
-                </button>
-                {{/unless}}
+            <textarea name="NoiDung" id="editor">
+    </textarea>
+            <div class="text-right">
+                <button type="submit" class="btn btn-outline-success mt-5">Thêm bài viết</button>
             </div>
         </form>
     </div>
 </div>
-
 <script>
 
     CKEDITOR.replace('editor');
@@ -225,9 +217,5 @@
         uiLibrary: 'bootstrap4',
         format: 'yyyy-mm-dd'
     });
-
-    var val = $('#NoiDungText').val();
-    CKEDITOR.instances['editor'].setData(val);
-    $("#NoiDungText").remove();
 
 </script>

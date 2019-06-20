@@ -31,15 +31,6 @@ module.exports = {
         `);
     },
 
-    selectPostOfEditorAndManageCategoryAndStatus: () => {
-        return db.load(`
-            select * 
-            from taikhoan tk, chuyenmuccon con
-            where tk.AssignedCategories = con.ID 
-        `);
-    },
-
-
     add: entity => {
         return db.add('chuyenmuccon', entity);
     },

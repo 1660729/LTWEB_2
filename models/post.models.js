@@ -43,6 +43,12 @@ module.exports = {
     },
     approvedPost: () => {
         return db.load('select * from baiviet where TinhTrang = 2');
+    },
+    GetPostByUser: () => {
+        return db.load('select * from baiviet bv, taikhoan tk where bv.IDUser = tk.ID limit 6');
+    },
+    countGetPostByUser: () => {
+        return db.load('select count(tk.ID) from baiviet bv, taikhoan tk where bv.IDUser = tk.ID');
     }
 };
 

@@ -62,6 +62,7 @@ app.use('/account', require('./routes/account'));
 app.use('/categories', require('./routes/categories'));
 app.use('/products', require('./routes/products'));
 app.use('/admin', require('./routes/admin'));
+app.use('/writer', require('./routes/writer'));
 app.use('/editor', require('./routes/editor'));
 app.use('/tag', require('./routes/tag'));
 app.use('/search', require('./routes/search'));
