@@ -63,6 +63,8 @@ app.use('/categories', require('./routes/categories'));
 app.use('/products', require('./routes/products'));
 app.use('/admin', require('./routes/admin'));
 app.use('/tag', require('./routes/tag'));
+app.use('/search', require('./routes/search'));
+app.use('/subscriber', require('./routes/subscriber'));
 
 // render toi trang home
 app.get('/', (req, res) => {

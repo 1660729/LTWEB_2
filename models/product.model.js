@@ -96,10 +96,11 @@ module.exports = {
     },
 
     // tìm kiếm full-text search
-    seachFullText: name => {
+    seachFullText: key => {
         return db.load(`
-            SELECT * FROM baiviet
-            WHERE MATCH(TieuDe, NDTomTat) AGAINST('${name}');
+            SELECT *, DAY(NgayDang) as day, MONTH(NgayDang) AS month, YEAR(NgayDang) AS year 
+            FROM baiviet
+            WHERE MATCH(TieuDe, NDTomTat, NoiDung) AGAINST('${key}') limit 5
         `);
     },
 

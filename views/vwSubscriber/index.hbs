@@ -34,24 +34,25 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Tên Loại Con</th>
-                            <th scope="col">ID Cha</th>
-                            <th scope="col" class="text-right">
-                                <a class="btn btn-danger" href="/categories/add" role="button" title="Add">
+                            <th scope="col">Tên Độc Giả</th>
+                            <th scope="col">Thời Hạn</th>
+                            {{!-- <th scope="col" class="text-right">
+                                <a class="btn btn-danger" href="/tag/add" role="button" title="Add">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
-                                    Thêm chuyên mục
+                                    Gia Hạn Độc Giả
                                 </a>
-                            </th>
+                            </th> --}}
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each this.chuyenmuccon}}
+                        {{#each this.qlSubscriber}}
                         <tr>
                             <th scope="row">{{ID}}</th>
-                            <td>{{TenLoaiCon}}</td>
-                            <td>{{IDCha}}</td>
+                            <th scope="row">{{TenDocGia}}</th>
+                            <td>{{day}}/{{month}}/{{year}}</td>
+                            {{!-- <td>{{IDCha}}</td> --}}
                             <td class="text-right">
-                                <a name="" id="" class="btn btn-primary btn-xs" href="/categories/edit/{{ID}}"
+                                <a name="" id="" class="btn btn-primary btn-xs" href="/subscriber/edit/{{ID}}"
                                     role="button" title="Edit">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/public/style.css">
   <link href='https:/fonts.googleapis.com/css?family=Nunito+Sans:400,500,700|Quicksand:500,700' rel='stylesheet'
     type='text/css'>
-  <script>
+  {{!-- <script>
     window.fbAsyncInit = function () {
       FB.init({
         appId: '{your-app-id}',
@@ -31,7 +31,7 @@
       js.src = "https://connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-  </script>
+  </script> --}}
 
   {{{_sections.css}}}
 </head>
@@ -118,8 +118,8 @@
 
                 <!-- Search Form -->
                 <div class="search-form">
-                  <form action="#" method="get">
-                    <input type="search" name="search" class="form-control" placeholder="Search ...">
+                  <form action="/search" method="get">
+                    <input type="search" name="txtSearch" class="form-control" placeholder="Search ...">
                     <button type="submit"><i class="fa fa-search"></i></button>
                   </form>
                 </div>
@@ -217,13 +217,13 @@
   <script src="https://www.google.com/recaptcha/api/siteverify"></script>
   <script src="/public/ckeditor/ckeditor.js"></script>
   {{!-- <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script> --}}
-  <script>
+  {{!-- <script>
     grecaptcha.ready(function () {
       grecaptcha.execute('6LfUSakUAAAAAP-DKEypC7-r7CEqFqvvlOMAHv11', { action: 'homepage' }).then(function (token) {
          ...
       });
   });
-  </script>
+  </script> --}}
   {{{_sections.js}}}
 </body>
 
