@@ -2,6 +2,7 @@ var multer = require('multer');
 var postModel = require('../models/post.models');
 var writerRestricted = require('../middlewares/writerRestricted');
 var adminRestricted = require('../middlewares/adminRestricted');
+var editorReticted = require('../middlewares/editorRetricted');
 
 var authmdw = require('./auth.mdw');
 module.exports = function(app) {
@@ -87,7 +88,7 @@ module.exports = function(app) {
         })
     })
 
-    app.post('/editor/editapproved/:id', adminRestricted, (req, res, next) => {
+    app.post('/editor/editapproved/:id', editorReticted, (req, res, next) => {
         multer({ storage }).single('file')(req, res, err => {
             if (err) {
                 return res.json({
@@ -109,9 +110,7 @@ module.exports = function(app) {
             postModel.update(id, entity, (err, post) => {
                 if (err) return res.json({ error: err.message });
             }).then(n => {
-                res.render('vwEditor/edit', {
-                    success: 'Chỉnh sửa thành công!!'
-                });
+                res.redirect('/editor');
             })
         })
     })

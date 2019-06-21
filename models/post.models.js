@@ -15,6 +15,12 @@ module.exports = {
         return db.update('baiviet', 'ProID', entity, id);
     },
 
+    updateUser: entity => {
+        var id = entity.ID;
+        delete entity.ID;
+        return db.update('baiviet', 'ProID', entity, id);
+    },
+
     delete: id => {
         return db.delete('baiviet', 'ProID', id);
     },

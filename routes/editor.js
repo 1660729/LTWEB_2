@@ -19,6 +19,8 @@ router.get('/', editorRestricted, (req, res) => {
                     element.TinhTrang = 'Chưa được duyệt';
                 } else if (element.TinhTrang == 2) {
                     element.TinhTrang = 'Đã duyệt';
+                } else if (element.TinhTrang == 0) {
+                    element.TinhTrang = 'Bị từ chối';
                 }
             });
             res.render('vwEditor/index', {
@@ -64,7 +66,7 @@ router.get('/editapproved/:id', editorRestricted, (req, res) => {
 
 
 router.post('/update', editorRestricted, (req, res) => {
-    postModel.update(req.body).then(n => {
+    postModel.updateUser(req.body).then(n => {
         res.redirect('/editor');
     });
 })

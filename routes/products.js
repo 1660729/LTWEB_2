@@ -1,6 +1,7 @@
 var express = require('express');
 var productModel = require('../models/product.model');
 var postModel = require('../models/post.models');
+var writerRestricted = require('../middlewares/writerRestricted');
 var adminRestricted = require('../middlewares/adminRestricted');
 
 var router = express.Router();
@@ -28,11 +29,11 @@ router.get('/postmanage', adminRestricted, (req, res) => {
         });
 })
 
-router.get('/uppost', adminRestricted, (req, res, next) => {
+router.get('/uppost', writerRestricted, (req, res, next) => {
     res.render('vwProducts/uppost');
 })
 
-router.get('/editpost/:id', adminRestricted, (req, res) => {
+router.get('/editpost/:id', writerRestricted, (req, res) => {
     var id = req.params.id;
     if (isNaN(id)) {
         res.render('vwProducts/editpost', {
@@ -65,13 +66,13 @@ router.get('/editpost/:id', adminRestricted, (req, res) => {
 })
 
 
-router.post('/update', adminRestricted, (req, res) => {
+router.post('/update', writerRestricted, (req, res) => {
     postModel.update(req.body).then(n => {
         res.redirect('/products');
     });
 })
 
-router.post('/delete', adminRestricted, (req, res) => {
+router.post('/delete', writerRestricted, (req, res) => {
     postModel.delete(+req.body.ProID).then(n => {
         res.redirect('/products');
     });

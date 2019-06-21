@@ -25,10 +25,10 @@ router.get('/loadpost', writerRestricted, (req, res, next) => {
         }
         var total = new Number();
         total = Ctotal;
-        var nPage = new Number();
-        nPage = Math.floor(total / limit);
+        var nPages = new Number();
+        nPages = Math.floor(total / limit);
         if (total % limit >= 0)
-            nPages = nPage + 1;
+            nPages = nPages + 1;
         var page_numbers = [];
         for (var i = 1; i <= nPages; i++) {
             page_numbers.push({
@@ -37,7 +37,7 @@ router.get('/loadpost', writerRestricted, (req, res, next) => {
             })
         }
         res.render('vwWriter/loadpost', {
-            post: postchunks,
+            baiviet: postchunks,
             page_numbers
         });
     }).catch();
